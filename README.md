@@ -23,21 +23,15 @@ Biziness_Daily_Support(BDS)
 この経験によって得た課題を解決し、業務効率化を意識したシステムを作りたいと考えました。
 
 ### ターゲットユーザ
-・業務時間の効率化、日々の業務報告による残業代発生を出来るだけ抑制したいと考えている企業
+業務時間の効率化、日々の業務報告による残業代発生を出来るだけ抑制したいと考えている企業
 
 ### 主な利用シーン
-・業務報告
-・報告内容の確認
-・案件情報の確認
+* 業務報告
+* 報告内容の確認
+* 案件情報の確認
 
-## 設計書
-・画面設計書：<https://drive.google.com/drive/folders/10c_sd2HAEBBSLdd7lGmZ8V2a4_0n0RM_>
-・ER図：<https://drive.google.com/file/d/1JDeEc1x3uUXaoFz8nuOdpBBb8R9v29lx/view?usp=sharing>
-・テーブル定義書：<https://drive.google.com/file/d/1g-xGniNc3cXFiEzHDjrZZMvlZa6WgHPx/view?usp=sharing>
-・アプリケーション詳細設計書：<https://drive.google.com/file/d/1fn21JR5L6ijYjd_5-Qo87yTureZzQmf4/view?usp=sharing>
-
-## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1xhV6KZxYuuqL1ZkYFMW0fdNloG055LqnbqT_Q13KqTU/edit?usp=sharing>
+## 機能一覧
+https://docs.google.com/spreadsheets/d/1xhV6KZxYuuqL1ZkYFMW0fdNloG055LqnbqT_Q13KqTU/edit?usp=sharing
 
 ## 開発環境
 * OS：Linux(CentOS)
@@ -47,5 +41,5 @@ Biziness_Daily_Support(BDS)
 * IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+* logo maker : https://logo-maker.stores.jp/
+* Google Maps Platform : https://cloud.google.com/maps-platform/
