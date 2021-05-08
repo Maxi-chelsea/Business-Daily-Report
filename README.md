@@ -1,17 +1,15 @@
-# ここにアプリ名を入力
-Biziness_Daily_Support(BDS)
+# Biziness_Daily_Support(BDS)
 
 ## サイト概要
-日々の営業活動(業務報告・案件管理・施設情報管理・メッセージ機能)を簡潔に行えるサイト
-
-
-### サイトテーマ
 メインコンテンツとしては「業務報告」、「案件管理」、「施設情報管理」、「メッセージ機能」を実装予定
 全てに共通させることは「簡潔に」ということ。
 理由は残業削減などの意識が高まる世の中で、営業マンは可能な限り取引先への営業活動を多くしたいが、上長への報連相も重要。
 但し、それぞれの報告や連絡を別々のツールを使っていてはとても非効率となります。
 全てをまとめることでより効率的に行えるようにします。
 さらに、それぞれの報告が連携しあうことで「該当施設の案件情報の確認」や「この業務報告はどの施設のものか？」などをすぐにわかりやすくします。
+
+### サイトテーマ
+日々の営業活動(業務報告・案件管理・施設情報管理・メッセージ機能)を簡潔に行えるサイト
 
 ### テーマを選んだ理由
 前職で使用していたCRMが下記の理由で非常に不便だった経験があります。
@@ -32,6 +30,12 @@ Biziness_Daily_Support(BDS)
 
 ## 機能一覧
 https://docs.google.com/spreadsheets/d/1xhV6KZxYuuqL1ZkYFMW0fdNloG055LqnbqT_Q13KqTU/edit?usp=sharing
+
+##補足資料
+* wbs https://docs.google.com/spreadsheets/d/1cIKw_6rvOrAHI3DRZr6EyIPmP0GoTbfQWyA_VSiiYCA/edit#gid=1773513600
+* 画像遷移図　https://drive.google.com/file/d/1NYFMp509RirGqgnX902H8igrvoAvT2wS/view?usp=sharing
+* ワイヤーフレーム　https://docs.google.com/presentation/d/1TNOB0qqVB5vExztnC98N96UlWC9eqaoy/edit#slide=id.p1
+* ER図　https://drive.google.com/file/d/1JDeEc1x3uUXaoFz8nuOdpBBb8R9v29lx/view?usp=sharing
 
 ## 開発環境
 * OS：Linux(CentOS)
