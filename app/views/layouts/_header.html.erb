@@ -1,0 +1,25 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><h3 class="btn btn-light btn-lg text-warning border border-dark">logo</h3></a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if employee_signed_in? && current_employee.admin == true %>
+          <li><%= link_to 'アカウント管理', employees_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to '施設一覧', facilities_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%#= link_to 'メッセージ', admins_orders_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to '案件一覧', items_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to '業務報告', dairy_reports_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+        <% else %>
+          <li><%= link_to '施設一覧', facilities_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%#= link_to 'メッセージ', admins_orders_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to '案件一覧', items_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to '業務報告', dairy_reports_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+          <li><%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

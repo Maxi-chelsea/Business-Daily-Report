@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_072948) do
+ActiveRecord::Schema.define(version: 2021_05_11_052107) do
 
   create_table "daily_reports", force: :cascade do |t|
-    t.integer "employee_id"
-    t.integer "facility_id"
+    t.integer "employee_id", null: false
+    t.integer "facility_id", null: false
     t.integer "comment_id"
-    t.datetime "time"
-    t.string "person"
-    t.text "content"
+    t.datetime "time", null: false
+    t.string "person", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "dairy_report_comments", force: :cascade do |t|
-    t.integer "dairy_report_id"
-    t.integer "employee_id"
-    t.text "comment"
+    t.integer "dairy_report_id", null: false
+    t.integer "employee_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,46 +47,40 @@ ActiveRecord::Schema.define(version: 2021_05_10_072948) do
   end
 
   create_table "facilities", force: :cascade do |t|
-    t.integer "employee_id"
-    t.integer "genre_id"
-    t.integer "item_id"
-    t.string "name"
-    t.integer "postal_code"
-    t.string "address"
-    t.string "responsible_person"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "facility_genres", force: :cascade do |t|
-    t.string "name"
+    t.integer "employee_id", null: false
+    t.string "name", null: false
+    t.integer "postal_code", null: false
+    t.string "address", null: false
+    t.string "responsible_person", null: false
+    t.boolean "is_closed", default: false, null: false
+    t.integer "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "item_comments", force: :cascade do |t|
-    t.integer "employee_id"
-    t.text "comment"
+    t.integer "employee_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "facility_id"
+    t.integer "facility_id", null: false
     t.integer "comment_id"
-    t.string "title"
-    t.boolean "genre"
-    t.integer "status"
-    t.text "content"
+    t.string "title", null: false
+    t.boolean "genre", null: false
+    t.integer "status", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "employee_id"
-    t.integer "receive_employee_id"
-    t.string "title"
-    t.text "content"
+    t.integer "employee_id", null: false
+    t.integer "receive_employee_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

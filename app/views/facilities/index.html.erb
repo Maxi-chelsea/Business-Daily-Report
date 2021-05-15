@@ -1,0 +1,41 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= link_to new_facility_path do %>
+        <p>新規作成</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>施設ID</th>
+            <th>施設名</th>
+            <th>施設ジャンル</th>
+            <th>案件名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @facilities.each do |facility| %>
+        <tbody>
+          <tr>
+            <td><%= facility.id %></td>
+            <td><%= facility.name %></td>
+            <td><%= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
+            <td><%#= facility.item.name %></td>
+            <td>
+              <%= link_to edit_facility_path(facility.id)  do %>
+                編集する
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
