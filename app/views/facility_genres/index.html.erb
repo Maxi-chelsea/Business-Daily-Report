@@ -1,0 +1,36 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>ジャンル一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% @facility_genres.each do |genre| %>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ジャンル名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= genre.id %></td>
+            <td><%= genre.name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <%= form_with model:@new_genre, local:true do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit "作成" %>
+      <% end %>
+    </div>
+  </div>
+</div>

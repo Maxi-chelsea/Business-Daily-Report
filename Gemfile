@@ -71,3 +71,6 @@ gem 'rspec-rails'
 gem 'pry-byebug', group: :development
 gem "simple_calendar", "~> 2.0"
 gem 'rubocop', '~> 0.35.1'
+
+gem 'rails-i18n'
+gem 'enum_help'

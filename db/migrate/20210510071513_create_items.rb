@@ -1,12 +1,12 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
-      t.integer :facility_id
+      t.integer :facility_id, null: false
       t.integer :comment_id
-      t.string :title
-      t.boolean :genre
-      t.integer :status
-      t.text :content
+      t.string :title, null: false
+      t.boolean :genre, null: false
+      t.integer :status, null: false
+      t.text :content, null: false
 
       t.timestamps
     end
