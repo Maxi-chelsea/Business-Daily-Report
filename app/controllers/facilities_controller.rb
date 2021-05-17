@@ -18,7 +18,7 @@ class FacilitiesController < ApplicationController
     facility.genre = params[:facility][:genre].to_i
     if facility.save
       flash.notice = 'メッセージを送信しました。'
-      redirect_to facilities_path
+      redirect_to facility_path(facility)
     else
       flash.now.alert = '入力に誤りがあります。'
       render action: 'new'
@@ -26,9 +26,14 @@ class FacilitiesController < ApplicationController
   end
 
   def edit
+    @facility = Facility.find(params[:id])
   end
 
   def update
+    @facility = Facility.find(params[:id])
+    @facility.update(facility_params)
+    redirect_to facility_path(@facility)
+
   end
 
   private

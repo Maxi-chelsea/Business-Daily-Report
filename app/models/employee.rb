@@ -7,6 +7,7 @@ class Employee < ApplicationRecord
   enum is_deleted: { '有効': false, '退職': true }
 
   has_many :facilities
+  has_many :items
   has_many :daily_reports
   has_many :dairy_report_comments
   has_many :item_comments

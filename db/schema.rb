@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_05_11_052107) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "employee_id", null: false
     t.integer "facility_id", null: false
-    t.integer "comment_id"
     t.string "title", null: false
     t.boolean "genre", null: false
     t.integer "status", null: false

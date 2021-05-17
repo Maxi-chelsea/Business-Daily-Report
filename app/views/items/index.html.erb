@@ -1,0 +1,40 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= link_to new_item_path do %>
+        <p>案件新規作成</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>作成者</th>
+            <th>施設名</th>
+            <th>案件ジャンル</th>
+            <th>案件名</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%#= items.id %></td>
+            <td><%= item.facility.name %></td>
+            <td><%#= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
+            <td>
+              <%= link_to item_path(item.id) do %>
+                <%= item.title %>
+              <% end %>
+            </td>
+            <td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

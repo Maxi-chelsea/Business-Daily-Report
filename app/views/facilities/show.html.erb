@@ -1,3 +1,5 @@
+<%= render 'layouts/header' %>
+
 <div class='container'>
   <div class='row'>
     <div class='col'>
@@ -8,22 +10,51 @@
   </div>
   <div class='row'>
     <div class='col'>
-      <h4>施設名</h4>
-      <%= @facility.name %>
-      <h4>郵便番号</h4>
-      <%= @facility.postal_code %>
-      <h4>施設住所</h4>
-      <%= @facility.address %>
-      <h4>施設ジャンル</h4>
-      <%#= f.text_field %>
-      <h4>施設責任者</h4>
-      <%= @facility.responsible_person %>
-      <h4>営業担当者</h4>
-      <%#= f.text_field %>
-      <h4>案件名</h4>
-      <%#= f.text_field %>
-      <h4>案件内容</h4>
-      <%#= f.text_field %>
+      <table>
+        <tr>
+          <th>施設名</th>
+          <th><%= @facility.name %></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><%= @facility.postal_code %></th>
+        </tr>
+        <tr>
+          <th>施設住所</th>
+          <th><%= @facility.address %></th>
+        </tr>
+        <tr>
+          <th>施設ジャンル</th>
+          <th><%= I18n.t("enums.facility.genre.#{@facility.genre}") %></th>
+        </tr>
+        <tr>
+          <th>施設責任者</th>
+          <th><%= @facility.responsible_person %></th>
+        </tr>
+      </table>
+    </div>
+    <div class='col'>
+      <table>
+        <tr>
+          <th>営業担当者</th>
+          <th><%= @facility.employee.name %></th>
+        </tr>
+        <tr>
+          <th>案件名</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>案件内容</th>
+          <th></th>
+        </tr>
+      </table>
+      <% if @employee_id = current_employee.id %>
+        <div class="btn btn-primary">
+          <%= link_to edit_facility_path(@facility.id) do %>
+            編集する
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
