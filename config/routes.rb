@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :employees, only: [:index, :show, :new, :create, :edit, :update]
-  resources :facilities, only: [:new, :create, :index, :show, :edit, :update]
-  resources :facility_genres, only: [:index, :create]
+  scope :facility do
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  end
 
-
-  resources :items
+  resources :facilities, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :dairy_reports
 end

@@ -3,7 +3,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col'>
-      <h2>施設新規登録</h2>
+      <h2>施設情報修正</h2>
     </div>
   </div>
   <div class='row'>
@@ -19,7 +19,7 @@
         <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %>
         <label class="font-weight-bold"><%= f.label :responsible_person, "施設責任者" %></label><br>
         <%= f.text_field :responsible_person %><br>
-        <%= f.submit "作成完了" %>
+        <%= f.submit "修正完了" %>
       <% end %>
     </div>
   </div>

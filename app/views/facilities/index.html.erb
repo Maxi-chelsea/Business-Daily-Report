@@ -24,7 +24,11 @@
         <tbody>
           <tr>
             <td><%= facility.id %></td>
-            <td><%= facility.name %></td>
+            <td>
+              <%= link_to facility_path(facility.id) do %>
+                <%= facility.name %>
+              <% end %>
+            </td>
             <td><%= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
             <td><%#= facility.item.name %></td>
             <td>
