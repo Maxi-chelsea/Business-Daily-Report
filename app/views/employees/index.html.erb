@@ -1,0 +1,46 @@
+<%= render 'layouts/header' %>
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-10">
+      <h2>社員アカウント一覧</h2>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">社員名</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">ステータス</th>
+              <% if employee_signed_in? && current_employee.admin == true %>
+                <th scope="col"></th>
+              <% end %>
+            </tr>
+          </thead>
+          <% @employees.each do |employee| %>
+          <tbody>
+            <tr>
+              <td scope="row"><%= employee.id %></td>
+              <td scope="row"><%= employee.name %></td>
+              <td scope="row"><%= employee.email %></td>
+              <td scope="row"><%= employee.is_deleted %></td>
+              <% if employee_signed_in? && current_employee.admin == true %>
+              <td scope="row">
+                <%= link_to edit_employee_path(employee.id)  do %>
+                  編集する
+                <% end %>
+              </td>
+              <% end %>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+    </div>
+    <div class="col-md-2">
+      <label class="font-weight-bold">
+        <%= link_to new_employee_path do %>
+          新規アカウント作成
+        <% end %>
+      </label>
+    </div>
+  </div>
+</div>

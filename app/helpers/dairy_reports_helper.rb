@@ -1,0 +1,2 @@
+module DairyReportsHelper
+end

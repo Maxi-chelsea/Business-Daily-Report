@@ -1,0 +1,8 @@
+ja:
+  enums:
+    facility:
+      genre:
+        '---': "---"
+        public: "公立"
+        private: "民間"
+        other: "その他"

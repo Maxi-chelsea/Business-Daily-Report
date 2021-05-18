@@ -1,0 +1,26 @@
+<%= render 'layouts/header' %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col'>
+      <h2>施設新規登録</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col '>
+      <%= form_with model:@facility, local:true do |f| %>
+        <label class="font-weight-bold"><%= f.label :name, "施設名" %></label><br>
+        <%= f.text_field :name %><br>
+        <label class="font-weight-bold"><%= f.label :postal_code, "郵便番号" %></label><br>
+        <%= f.text_field :postal_code %><br>
+        <label class="font-weight-bold"><%= f.label :address, "住所" %></label><br>
+        <%= f.text_field :address %><br>
+        <label class="font-weight-bold"><%= f.label :address, "施設ジャンル" %></label><br>
+        <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %>
+        <label class="font-weight-bold"><%= f.label :responsible_person, "施設責任者" %></label><br>
+        <%= f.text_field :responsible_person %><br>
+        <%= f.submit "作成完了" %>
+      <% end %>
+    </div>
+  </div>
+</div>
