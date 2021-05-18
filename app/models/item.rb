@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :facilitie
+  belongs_to :facility
   has_many :daily_reports
   has_many :item_comments
 

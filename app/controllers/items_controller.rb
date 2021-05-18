@@ -11,26 +11,22 @@ class ItemsController < ApplicationController
   def new
     @employee = current_employee
     @facilities = @employee.facilities
-    @facilitie_hash = {}
+    @facilities_hash = {}
     @facilities.each {|facility|
-      @facilitie_hash[facility.name] = facility.id
+      @facilities_hash[facility.name] = facility.id
     }
-
+ 
     @item = Item.new
 
   end
 
   def create
     item = Item.new(item_params)
-    itme.employee_id = current_employee.id
+    item.employee_id = current_employee.id
+    item.facility_id = @facilities_hash
+    byebug
     item.save
-    if item.save
-      flash.notice = 'メッセージを送信しました。'
-      redirect_to items_path
-    else
-      flash.now.alert = '入力に誤りがあります。'
-      render action: 'new'
-    end
+    redirect_to items_path
   end
 
   def edit
@@ -44,7 +40,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:title, :genre, :status, :content)
+    params.permit(:id, :facility_id, :title, :genre, :status, :content)
   end
 
 end

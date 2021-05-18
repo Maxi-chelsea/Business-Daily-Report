@@ -15,12 +15,14 @@
         <label class="font-weight-bold"><%= f.label :email, "メールアドレス" %></label><br>
         <%= f.text_field :email %><br>
         <label class="font-weight-bold"><%= f.label :is_deleted, "ステータス" %></label><br>
-	      <label>
-	        <%= f.radio_button :is_deleted, :"有効", {:checked => true} %>
-	        <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-	        <%= f.radio_button :is_deleted, :"退職" %>
-	        <%= f.label :is_deleted, "退職", {value: :true, style: "display: inline-block;"} %>
-	      </label>
+        <% if employee_signed_in? && current_employee.admin == true %>
+  	      <label>
+  	        <%= f.radio_button :is_deleted, :"有効", {:checked => true} %>
+  	        <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+  	        <%= f.radio_button :is_deleted, :"退職" %>
+  	        <%= f.label :is_deleted, "退職", {value: :true, style: "display: inline-block;"} %>
+  	      </label>
+  	   <% end %>
         <%= f.submit "編集完了" %>
       <% end %>
     </div>
