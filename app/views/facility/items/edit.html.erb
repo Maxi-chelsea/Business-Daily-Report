@@ -1,0 +1,23 @@
+<%= render 'layouts/header' %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col'>
+      <h2>案件編集</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col '>
+      <%= form_with model:@item, url: item_path, local:true do |f| %>
+        <label class="font-weight-bold"><%= f.label :title, "案件名" %></label><br>
+        <%= f.text_field :title %><br>
+        <label class="font-weight-bold"><%= f.label :status, "案件ステータス" %></label><br>
+        <%= f.select :status, Item.statuses.keys, include_blank: "-----" %><br>
+        <label class="font-weight-bold"><%= f.label :content, "案件内容" %></label><br>
+        <%= f.text_area :content %>
+        <%#= f.hidden_field :facility_id, :value => facility.id %>
+        <%= f.submit "変更完了" %>
+      <% end %>
+    </div>
+  </div>
+</div>

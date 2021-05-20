@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_05_11_052107) do
 
   create_table "item_comments", force: :cascade do |t|
     t.integer "employee_id", null: false
+    t.integer "item_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

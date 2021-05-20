@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 <div class="container">
-  
+
   <div class="row">
     <div class="col-md-10">
       <h2>社員アカウント一覧</h2>
@@ -25,7 +25,7 @@
               <td scope="row"><%= employee.is_deleted %></td>
               <% if employee_signed_in? && current_employee.admin == true %>
               <td scope="row">
-                <%= link_to edit_employee_path(employee.id)  do %>
+                <%= link_to edit_employee_path(employee.id) do %>
                   編集する
                 <% end %>
               </td>
@@ -36,10 +36,12 @@
         </table>
     </div>
     <div class="col-md-2">
+      <% if current_employee.admin == true %>
       <label class="font-weight-bold">
         <%= link_to new_employee_path do %>
           新規アカウント作成
         <% end %>
+      <% end %>
       </label>
     </div>
   </div>
