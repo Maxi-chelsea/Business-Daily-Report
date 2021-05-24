@@ -16,9 +16,16 @@
         <label class="font-weight-bold"><%= f.label :address, "住所" %></label><br>
         <%= f.text_field :address %><br>
         <label class="font-weight-bold"><%= f.label :address, "施設ジャンル" %></label><br>
-        <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %>
+        <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %><br>
         <label class="font-weight-bold"><%= f.label :responsible_person, "施設責任者" %></label><br>
         <%= f.text_field :responsible_person %><br>
+        <label class="font-weight-bold"><%= f.label :is_closed, "運営状況" %></label><br>
+          <label>
+  	        <%= f.radio_button :is_closed, :"診療中", {:checked => true} %>
+  	        <%= f.label :is_closed, "診療中", {value: :false, style: "display: inline-block;"} %>
+  	        <%= f.radio_button :is_closed, :"閉院" %>
+  	        <%= f.label :is_closed, "閉院", {value: :true, style: "display: inline-block;"} %>
+  	      </label><br>
         <%= f.submit "修正完了" %>
       <% end %>
     </div>

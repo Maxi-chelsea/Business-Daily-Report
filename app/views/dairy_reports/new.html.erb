@@ -1,16 +1,16 @@
 <%= render 'layouts/header' %>
 
-<div class='container'>
-  <div class='row'>
-    <div class='col'>
-      <h2>案件新規登録</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>新規業務報告</p>
     </div>
   </div>
-  <div class='row'>
-    <div class='col '>
-      <%= form_with model:@itme, url: items_path, local:true do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= form_with model:@daily_report, url: dairy_reports_path, local:true do |f| %>
         <label class="font-weight-bold"><%= f.label :title, "施設名" %></label><br>
-        <%= f.select :facility, @facilities_hash, include_blank: "-----" %><br>
+        <%= f.select :facility_id, @facilities_hash, include_blank: "-----" %><br>
         <label class="font-weight-bold"><%= f.label :title, "案件名" %></label><br>
         <%= f.text_field :title %><br>
         <label class="font-weight-bold"><%= f.label :genre, "案件ジャンル" %></label><br>
@@ -22,7 +22,6 @@
         <%= f.select :status, Item.statuses.keys, include_blank: "-----" %><br>
         <label class="font-weight-bold"><%= f.label :content, "案件内容" %></label><br>
         <%= f.text_area :content %>
-        <%= f.hidden_field :facility_id, :value => facility.id %>
         <%= f.submit "作成完了" %>
       <% end %>
     </div>

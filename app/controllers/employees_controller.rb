@@ -9,9 +9,14 @@ class EmployeesController < ApplicationController
   end
 
   def new
+    @employee = Employee.new
   end
 
   def create
+    employee = Employee.new(employee_params)
+    employee.save
+    byebug
+    redirect_to employees_path
   end
 
   def edit
@@ -35,7 +40,7 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:email, :name, :is_deleted, :admin)
+    params.require(:employee).permit(:email, :password, :name)
   end
 
 end

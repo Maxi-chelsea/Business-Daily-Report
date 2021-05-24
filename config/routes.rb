@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
 
   resources :employees, only: [:index, :show, :new, :create, :edit, :update]
+
+  scope module: :facility do
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resources :item_comments, only: [:create, :destroy]
+    end
+  end
+
   resources :facilities, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-  resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-  resources :dairy_reports
+  resources :dairy_reports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :dairy_report_comments, only: [:create, :destroy]
+  end
 end

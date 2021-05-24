@@ -48,12 +48,10 @@
           <th></th>
         </tr>
       </table>
-      <% if @employee_id = current_employee.id %>
-        <div class="btn btn-primary">
-          <%= link_to edit_facility_path(@facility.id) do %>
-            編集する
-          <% end %>
-        </div>
+      <% if @facility.employee_id == current_employee.id %>
+        <%= link_to edit_facility_path(@facility.id) do %>
+        　<button class="btn btn-primary">編集する</button>
+      　<% end %>
       <% end %>
     </div>
   </div>
