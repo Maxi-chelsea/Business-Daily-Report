@@ -23,17 +23,32 @@ class DailyReport::DailyReportsController < ApplicationController
   def create
     daily_report = current_employee.daily_reports.new(daily_report_params)
     daily_report.employee_id = current_employee.id
-    daily_report.save
-    redirect_to daily_reports_path
+    if daily_report.save
+      redirect_to daily_reports_path
+    else
+      render :new
+    end
   end
 
   def edit
+    @daily_report = DailyReport.find(params[:id])
+    @facilities = current_employee.facilities
+    @facilities_hash = {}
+    @facilities.each {|facility|
+      @facilities_hash[facility.name] = facility.id
+    }
   end
 
   def update
+    @daily_report = DailyReport.find(params[:id])
+    @daily_report.update(daily_report_params)
+    redirect_to daily_report_path(@daily_report)
   end
 
   def destroy
+    daily_report = DailyReport.find(params[:id])
+    daily_report.destroy
+    redirect_to daily_reports_path
   end
 
   private

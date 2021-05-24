@@ -1,0 +1,24 @@
+<%= render 'layouts/header' %>
+
+<h2>メッセージ一覧</h2>
+<% employee = Employee.find_by(id: @message.receive_employee_id) %>
+<% @messages.each do |message| %>
+<div>
+  <div class="media-body">
+    <div>
+    <%= link_to message.employee.name, employee_path(message.employee) %> <span class="text-muted">posted at <%= message.created_at %></span>
+    </div>
+    <div>
+      <%= message.content %><br>
+      <% if current_employee == message.employee %>
+        <%= link_to "削除", employee_message_path(current_employee, message), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+      <% end %>
+    </div>
+    </div>
+    <hr>
+  </div>
+<% end %>
+
+<h2>メッセージ</h2>
+<%= render 'messages/form', message: @message %>
+<%= link_to "ホームへ戻る", employee_path(current_employee) %>

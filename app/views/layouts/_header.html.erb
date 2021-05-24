@@ -13,7 +13,7 @@
                 <%= link_to '施設一覧', facilities_path, class: "bg-dark text-white" %>
               </li>
               <li class="nav-item nav-link">
-                <%#= link_to 'メッセージ', admins_orders_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+                <%= link_to 'メッセージ', employee_messages_path(current_employee.id), class: "bg-dark text-white" %></li>
               </li>
               <li class="nav-item nav-link">
                 <%= link_to '案件一覧', items_path, class: "bg-dark text-white" %>

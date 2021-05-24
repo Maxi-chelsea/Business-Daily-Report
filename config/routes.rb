@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
 
-  resources :employees, only: [:index, :show, :new, :create, :edit, :update]
+  resources :employees, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :messages, only: [:index, :create, :destroy]
+      member do
+        get :followings
+        get :followers
+        get :favorites
+      end
+  end
 
   scope module: :facility do
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
@@ -18,8 +25,13 @@ Rails.application.routes.draw do
 
   scope module: :daily_report do
     resources :daily_reports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
       resources :daily_report_comments, only: [:create, :destroy]
     end
   end
+
+  resources :users, only: [:index, :show, :new, :create] do
+
+end
 
 end

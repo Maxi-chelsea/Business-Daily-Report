@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>業務報告詳細</h2>
+      <h2 class="heading">業務報告詳細</h2>
     </div>
   </div>
 
@@ -60,6 +60,21 @@
           <%= f.submit "送信する" %>
         <% end %>
       </div>
+    </div>
+    <div class="col">
+      <% if @daily_report.favorited_by?(current_employee) %>
+        <p>
+          <%= link_to daily_report_favorites_path(@daily_report), method: :delete do %>
+            ♥<%= @daily_report.favorites.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to daily_report_favorites_path(@daily_report), method: :post do %>
+            ♡<%= @daily_report.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

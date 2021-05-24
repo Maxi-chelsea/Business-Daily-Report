@@ -1,0 +1,32 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="heading">業務報告編集</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form_with model:@daily_report, local:true do |f| %>
+        <label class="font-weight-bold">
+          <%= f.label :facility_id, "施設名" %>
+        </label><br>
+          <%= f.select :facility_id, @facilities_hash, include_blank: "-----" %><br>
+        <label class="font-weight-bold">
+          <%= f.label :time, "訪問日時" %>
+        </label>
+          <%= f.datetime_select :time, {}, class: 'form-control' %><br>
+        <label class="font-weight-bold">
+          <%= f.label :person, "面談者" %>
+        </label><br>
+          <%= f.text_field :person %><br>
+        <label class="font-weight-bold">
+          <%= f.label :content, "面談内容" %>
+        </label><br>
+          <%= f.text_area :content %><br>
+          <%= f.submit "編集完了" %>
+      <% end %>
+    </div>
+  </div>

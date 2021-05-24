@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_101436) do
+ActiveRecord::Schema.define(version: 2021_05_24_140921) do
 
   create_table "daily_report_comments", force: :cascade do |t|
     t.integer "employee_id", null: false
@@ -26,14 +26,6 @@ ActiveRecord::Schema.define(version: 2021_05_23_101436) do
     t.datetime "time", null: false
     t.string "person", null: false
     t.text "content", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dairy_report_comments", force: :cascade do |t|
-    t.integer "dairy_report_id", null: false
-    t.integer "employee_id", null: false
-    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +57,13 @@ ActiveRecord::Schema.define(version: 2021_05_23_101436) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "daily_report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_comments", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "item_id", null: false
@@ -85,12 +84,13 @@ ActiveRecord::Schema.define(version: 2021_05_23_101436) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.integer "receive_employee_id", null: false
-    t.string "title", null: false
-    t.text "content", null: false
+    t.text "content"
+    t.integer "employee_id"
+    t.integer "receive_employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_messages_on_employee_id"
+    t.index ["receive_employee_id"], name: "index_messages_on_receive_employee_id"
   end
 
 end
