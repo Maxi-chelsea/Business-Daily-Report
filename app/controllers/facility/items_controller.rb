@@ -2,6 +2,8 @@ class Facility::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @q = Item.ransack(params[:q])
+    @item_all = @q.result
   end
 
   def show

@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :facility
   belongs_to :employee
-  has_many :daily_reports
   has_many :item_comments, dependent: :destroy
 
   enum genre: { '新規': true, '既存': false }

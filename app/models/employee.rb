@@ -9,7 +9,7 @@ class Employee < ApplicationRecord
   has_many :facilities
   has_many :items
   has_many :daily_reports
-  has_many :dairy_report_comments
+  has_many :daily_report_comments
   has_many :item_comments
   has_many :messeages
 

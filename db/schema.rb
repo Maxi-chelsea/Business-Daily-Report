@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_052107) do
+ActiveRecord::Schema.define(version: 2021_05_23_101436) do
+
+  create_table "daily_report_comments", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "daily_report_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "daily_reports", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "facility_id", null: false
-    t.integer "comment_id"
     t.datetime "time", null: false
     t.string "person", null: false
     t.text "content", null: false

@@ -16,7 +16,7 @@
         <label class="font-weight-bold"><%= f.label :address, "住所" %></label><br>
         <%= f.text_field :address %><br>
         <label class="font-weight-bold"><%= f.label :address, "施設ジャンル" %></label><br>
-        <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %>
+        <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %><br>
         <label class="font-weight-bold"><%= f.label :responsible_person, "施設責任者" %></label><br>
         <%= f.text_field :responsible_person %><br>
         <%= f.submit "作成完了" %>

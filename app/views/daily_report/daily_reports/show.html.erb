@@ -1,0 +1,65 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>業務報告詳細</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>報告者</th>
+          <th><%= @daily_report.employee.name %></th>
+        </tr>
+        <tr>
+          <th>施設名</th>
+          <th><%= @daily_report.facility.name %></th>
+        </tr>
+        <tr>
+          <th>訪問日</th>
+          <th><%= @daily_report.time.to_s(:datetime_jp) %></th>
+        </tr>
+        <tr>
+          <th>面談者</th>
+          <th><%= @daily_report.person %></th>
+        </tr>
+        <tr>
+          <th>面談内容</th>
+          <th><%= @daily_report.content %></th>
+        </tr>
+      </table>
+      <% if @daily_report.employee_id == current_employee.id %>
+        <%= link_to edit_daily_report_path(@daily_report) do %>
+          <button class="btn btn-primary">編集する</button>
+        <% end %>
+        <%= link_to daily_report_path(@daily_report), method: :delete do %>
+          <button type="button" class="btn btn-danger">削除する</button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="comments">
+        <h4>コメント</h4>
+        <% @daily_report.daily_report_comments.each do |daily_report_comment| %>
+          <%= daily_report_comment.employee.name %>
+          <%= daily_report_comment.created_at.to_s(:datetime_jp) %><%= daily_report_comment.comment %>
+          <% if daily_report_comment.employee == current_employee %>
+            <%= link_to "削除", daily_report_daily_report_comment_path(@daily_report, daily_report_comment), method: :delete %>
+          <% end %>
+        <% end %>
+        </div>
+        <div class="new-comment">
+        <%= form_with(model:[@daily_report, @daily_report_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

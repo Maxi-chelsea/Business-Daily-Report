@@ -1,0 +1,37 @@
+      <nav>
+        <%= image_tag "Logo_bussines_daily_support.jpg", width: "200px" %>
+          <ul>
+            <% if employee_signed_in? %>
+              <li>
+                <%= link_to '社員一覧', employees_path %>
+              </li>
+              <li>
+                <%= link_to '施設一覧', facilities_path %>
+              </li>
+              <li>
+                <%#= link_to 'メッセージ', admins_orders_path, class: "btn btn-light text-warning mr-1 border border-dark" %></li>
+              </li>
+              <li>
+                <%= link_to '案件一覧', items_path %>
+              </li>
+              <li>
+                <%= link_to '業務報告', daily_reports_path %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to 'Top', root_path %>
+              </li>
+              <li>
+                <%= link_to 'About', home_about_path %>
+              </li>
+              <li>
+                <%= link_to 'Sing_in', new_employee_session_path %>
+              </li>
+            <% end %>
+          </ul>
+      </nav>
+
+

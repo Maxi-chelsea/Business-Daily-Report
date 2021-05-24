@@ -3,24 +3,44 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= link_to new_facility_path do %>
-        <p>新規作成</p>
-      <% end %>
+      <h2 class="heading">施設一覧</h2>
     </div>
   </div>
+
   <div class="row">
     <div class="col">
-      <table class="table">
-        <thead>
+      <%= search_form_for(@q, url:facilities_path) do |f| %>
+        <%= f.label :施設名 %>
+        <%= f.text_field :name %>
+        <%= f.label :住所 %>
+        <%= f.text_field :address_start %>
+        <%#= f.label :ジャンル %>
+        <%#= f.text_field :genre_start %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="col-md-10 offset-md-10">
+      <label class="font-weight-bold">
+        <%= link_to new_facility_path do %>
+          <p>新規作成</p>
+        <% end %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
           <tr>
             <th>施設ID</th>
             <th>施設名</th>
+            <th>施設状況</th>
             <th>施設ジャンル</th>
-            <th>登録案件名</th>
-            <th></th>
+            <th colspan="2">登録案件名</th>
           </tr>
         </thead>
-        <% @facilities.each do |facility| %>
+        <% @facilities_all.each do |facility| %>
         <tbody>
           <tr>
             <td><%= facility.id %></td>
