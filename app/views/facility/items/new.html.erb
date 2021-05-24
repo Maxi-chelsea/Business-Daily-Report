@@ -9,7 +9,7 @@
   <div class='row'>
     <div class='col '>
       <%= form_with model:@item, url: items_path, local:true do |f| %>
-        <label class="font-weight-bold"><%= f.label :title, "施設名" %></label><br>
+        <label class="font-weight-bold"><%= f.label :facility_id, "施設名" %></label><br>
         <%= f.select :facility_id, @facilities_hash, include_blank: "-----" %><br>
         <label class="font-weight-bold"><%= f.label :title, "案件名" %></label><br>
         <%= f.text_field :title %><br>

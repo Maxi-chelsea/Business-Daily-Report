@@ -2,6 +2,8 @@ class FacilitiesController < ApplicationController
 
   def index
     @facilities = Facility.all
+    @q = Facility.ransack(params[:q])
+    @facilities_all = @q.result
   end
 
   def show

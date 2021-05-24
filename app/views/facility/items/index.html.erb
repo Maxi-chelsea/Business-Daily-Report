@@ -1,17 +1,39 @@
 <%= render 'layouts/header' %>
 
 <div class="container">
+
   <div class="row">
     <div class="col">
-      <%= link_to new_item_path do %>
-        <p>案件新規作成</p>
-      <% end %>
+      <h2 class="heading">案件一覧</h2>
     </div>
   </div>
+
   <div class="row">
     <div class="col">
-      <table class="table">
-        <thead>
+      <%= search_form_for(@q, url:items_path) do |f| %>
+        <%= f.label :案件名 %>
+        <%= f.text_field :title_start %>
+        <%= f.label :ステータス %>
+        <%= f.text_field :status_start %>
+        <%#= f.label :ジャンル %>
+        <%#= f.text_field :genre_start %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="col-md-10 offset-md-10">
+      <label class="font-weight-bold">
+        <%= link_to new_item_path do %>
+          <p>案件新規作成</p>
+        <% end %>
+      </label>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
           <tr>
             <th>担当者</th>
             <th>施設名</th>
@@ -20,7 +42,7 @@
             <th>ステータス</th>
           </tr>
         </thead>
-        <% @items.each do |item| %>
+        <% @item_all.each do |item| %>
         <tbody>
           <tr>
             <td><%= item.employee.name %></td>

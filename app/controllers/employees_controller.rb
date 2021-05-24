@@ -2,6 +2,8 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    @q = Employee.ransack(params[:q])
+    @employees_all = @q.result
   end
 
   def show
