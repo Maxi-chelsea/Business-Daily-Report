@@ -19,6 +19,10 @@
           <th><%= @daily_report.facility.name %></th>
         </tr>
         <tr>
+          <th>タイトル</th>
+          <th><%= @daily_report.title %></th>
+        </tr>
+        <tr>
           <th>訪問日</th>
           <th><%= @daily_report.time.to_s(:datetime_jp) %></th>
         </tr>
@@ -64,13 +68,13 @@
     <div class="col">
       <% if @daily_report.favorited_by?(current_employee) %>
         <p>
-          <%= link_to daily_report_favorites_path(@daily_report), method: :delete do %>
+          <%= link_to daily_report_favorites_path(@daily_report), method: :delete, remote: true do %>
             ♥<%= @daily_report.favorites.count %> いいね
           <% end %>
         </p>
         <% else %>
         <p>
-          <%= link_to daily_report_favorites_path(@daily_report), method: :post do %>
+          <%= link_to daily_report_favorites_path(@daily_report), method: :post, remote: true do %>
             ♡<%= @daily_report.favorites.count %> いいね
           <% end %>
         </p>

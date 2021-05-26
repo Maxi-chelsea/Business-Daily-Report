@@ -1,0 +1,18 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>施設名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% daily_reports.each do |daily_report| %>
+      <tr>
+        <td>
+          <%= link_to daily_report.title, daily_report_path(daily_report) %>
+        </td>
+        <td><%= daily_report.facility.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

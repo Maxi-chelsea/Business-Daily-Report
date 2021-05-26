@@ -54,7 +54,7 @@ class DailyReport::DailyReportsController < ApplicationController
   private
 
   def daily_report_params
-    params.require(:daily_report).permit(:facility_id, :time, :person, :content)
+    params.require(:daily_report).permit(:facility_id, :title, :time, :person, :content)
   end
 
 end

@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_140921) do
   create_table "daily_reports", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "facility_id", null: false
+    t.string "title", null: false
     t.datetime "time", null: false
     t.string "person", null: false
     t.text "content", null: false

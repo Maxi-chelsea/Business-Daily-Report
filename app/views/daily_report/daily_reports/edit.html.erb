@@ -15,6 +15,10 @@
         </label><br>
           <%= f.select :facility_id, @facilities_hash, include_blank: "-----" %><br>
         <label class="font-weight-bold">
+          <%= f.label :title, "タイトル" %>
+        </label><br>
+          <%= f.text_field :title %><br>
+        <label class="font-weight-bold">
           <%= f.label :time, "訪問日時" %>
         </label>
           <%= f.datetime_select :time, {}, class: 'form-control' %><br>

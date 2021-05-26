@@ -11,6 +11,8 @@
       <%= form_with model:@daily_report, url: daily_reports_path, local:true do |f| %>
         <label class="font-weight-bold"><%= f.label :facility_id, "施設名" %></label><br>
         <%= f.select :facility_id, @facilities_hash, include_blank: "-----" %><br>
+        <label class="font-weight-bold"><%= f.label :title, "タイトル" %></label><br>
+        <%= f.text_field :title %><br>
         <label class="font-weight-bold"><%= f.label :time, "訪問時間" %></label><br>
         <%= f.datetime_select :time, {}, class: 'form-control' %><br>
 

@@ -25,6 +25,7 @@
           <tr>
             <th>作成日</th>
             <th>報告者</th>
+            <th>タイトル</th>
             <th colspan="2">施設名</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
           <tr>
             <td><%= daily_report.created_at.to_s(:datetime_jp) %></td>
             <td><%= daily_report.employee.name %></td>
+            <td><%= daily_report.title %></td>
             <td><%= daily_report.facility.name %></td>
             <td>
               <%= link_to daily_report_path(daily_report) do %>

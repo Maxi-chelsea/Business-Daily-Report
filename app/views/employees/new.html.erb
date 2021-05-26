@@ -7,7 +7,7 @@
   </div>
   <div class='row'>
     <div class='col '>
-      <%= form_with model:@employee, url: employees_path, local: true do |f| %>
+      <%= form_with model:@employee, url: employees_path, method: :post, local: true do |f| %>
         <label class="font-weight-bold"><%= f.label :name, "社員名" %></label><br>
         <%= f.text_field :name %><br>
         <label class="font-weight-bold"><%= f.label :email, "メールアドレス" %></label><br>

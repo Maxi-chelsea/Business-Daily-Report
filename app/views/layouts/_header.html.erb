@@ -1,19 +1,19 @@
 <div class="container-fluid bg-dark">
   <div class="row">
     <div class="col">
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <%= image_tag "Logo_bussines_daily_support.jpg", width: "300px" %>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto">
-            <% if employee_signed_in? %>
+      <% if employee_signed_in? %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+          <%= link_to image_tag("Logo_bussines_daily_support.jpg", width: "300px"), employee_path(current_employee.id) %>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item nav-link">
+                <%= link_to 'マイページ', employee_path(current_employee.id), class: "bg-dark text-white" %>
+              </li>
               <li class="nav-item nav-link">
                 <%= link_to '社員一覧', employees_path, class: "bg-dark text-white" %>
               </li>
               <li class="nav-item nav-link">
                 <%= link_to '施設一覧', facilities_path, class: "bg-dark text-white" %>
-              </li>
-              <li class="nav-item nav-link">
-                <%= link_to 'メッセージ', employee_messages_path(current_employee.id), class: "bg-dark text-white" %></li>
               </li>
               <li class="nav-item nav-link">
                 <%= link_to '案件一覧', items_path, class: "bg-dark text-white" %>
@@ -24,7 +24,14 @@
               <li class="nav-item nav-link">
                 <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: "bg-dark text-white" %>
               </li>
-            <% else %>
+            </ul>
+          </div>
+        </nav>
+      <% else %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+          <%= image_tag "Logo_bussines_daily_support.jpg", width: "300px" %>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item nav-link">
                 <%= link_to 'Top', root_path, class: "bg-dark text-white" %>
               </li>
@@ -34,10 +41,10 @@
               <li class="nav-item nav-link">
                 <%= link_to 'Sing_in', new_employee_session_path, class: "bg-dark text-white" %>
               </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+            </ul>
+          </div>
+        </nav>
+      <% end %>
     </div>
   </div>
 </div>
