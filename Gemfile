@@ -81,3 +81,5 @@ group :production do
 end
 gem 'ransack'
 
+gem 'jp_prefecture'
+

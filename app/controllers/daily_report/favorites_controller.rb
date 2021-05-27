@@ -4,6 +4,7 @@ class DailyReport::FavoritesController < ApplicationController
     daily_report = DailyReport.find(params[:daily_report_id])
     favorite = current_employee.favorites.new(daily_report_id: daily_report.id)
     favorite.save
+    daily_report.create_notification_favorite!(current_employee)
     redirect_to daily_report_path(daily_report)
   end
 

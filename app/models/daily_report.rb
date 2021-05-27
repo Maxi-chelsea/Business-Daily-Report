@@ -5,6 +5,8 @@ class DailyReport < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
+  has_many :notifications, dependent: :destroy
+
   def favorited_by?(employee)
     favorites.where(employee_id: employee.id).exists?
   end
@@ -12,5 +14,48 @@ class DailyReport < ApplicationRecord
   validates :time, presence: true
   validates :person, presence: true
   validates :content, presence: true
+  
+  def create_notification_favorite!(current_employee)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and daily_report_id = ? and action = ? ", current_employee.id, employee_id, id, 'favorite'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_employee.active_notifications.new(
+        daily_report_id: id,
+        visited_id: employee_id,
+        action: 'favorite'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+  
+  def create_notification_comment!(current_employee, daily_report_comment_id)
+    # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
+    temp_ids = Comment.select(:employee_id).where(daily_report_id: id).where.not(employee_id: current_employee.id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_comment!(current_employee, daily_report_comment_id, temp_id['employee_id'])
+    end
+    # まだ誰もコメントしていない場合は、投稿者に通知を送る
+    save_notification_comment!(current_employee, daily_report_comment_id, employee_id) if temp_ids.blank?
+  end
+
+  def save_notification_comment!(current_employee, daily_report_comment_id, visited_id)
+    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
+    notification = current_employee.active_notifications.new(
+      daily_report_id: id,
+      daily_report_comment_id: daily_report_comment_id,
+      visited_id: visited_id,
+      action: 'comment'
+    )
+    # 自分の投稿に対するコメントの場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
 
 end

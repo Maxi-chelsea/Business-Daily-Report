@@ -4,7 +4,9 @@ class DailyReport::DailyReportCommentsController < ApplicationController
     daily_report = DailyReport.find(params[:daily_report_id])
     comment = current_employee.daily_report_comments.new(daily_report_comment_params)
     comment.daily_report_id = daily_report.id
+    # @post = comment.post
     comment.save
+    # @post.create_notification_comment!(current_employee, daily_report_comment.id)
     redirect_to daily_report_path(daily_report)
   end
 

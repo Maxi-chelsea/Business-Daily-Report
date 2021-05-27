@@ -51,6 +51,9 @@ class DailyReport::DailyReportsController < ApplicationController
     redirect_to daily_reports_path
   end
 
+  
+  
+
   private
 
   def daily_report_params

@@ -2,6 +2,7 @@
 
 <div class="container-fluid px-5">
   <div class='row'>
+    <!--通知機能の部分テンプレート-->
     <div class='col-2 mr-1'>
       <%= render 'employees/message' %>
       <%= render 'employees/comment' %>
@@ -12,10 +13,16 @@
       <%= form_with model:@facility, local:true do |f| %>
         <label class="font-weight-bold"><%= f.label :name, "施設名" %></label><br>
         <%= f.text_field :name %><br>
-        <label class="font-weight-bold"><%= f.label :postal_code, "郵便番号" %></label><br>
+        <label class="font-weight-bold"><%= f.label :postcode, "郵便番号" %></label><br>
         <%= f.text_field :postal_code %><br>
-        <label class="font-weight-bold"><%= f.label :address, "住所" %></label><br>
-        <%= f.text_field :address %><br>
+        <label class="font-weight-bold"><%= f.label :prefecture_name, "都道府県" %></label><br>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %><br>
+        <label class="font-weight-bold"><%= f.label :address_city, "市区町村" %></label><br>
+        <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %><br>
+        <label class="font-weight-bold"><%= f.label :address_street, "番地" %></label><br>
+        <%= f.text_field :address_stree, autocomplete: 'address_street', class: 'form-control' %><br>
+        <label class="font-weight-bold"><%= f.label :address_building, "建物" %></label><br>
+        <%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control' %><br>
         <label class="font-weight-bold"><%= f.label :address, "施設ジャンル" %></label><br>
         <%= f.select  :genre, Facility.genres.map {|k,v| [I18n.t("enums.facility.genre.#{k}"), v]} %><br>
         <label class="font-weight-bold"><%= f.label :responsible_person, "施設責任者" %></label><br>

@@ -16,11 +16,11 @@
         </tr>
         <tr>
           <th>郵便番号</th>
-          <td><%= @facility.postal_code %></td>
+          <td><%= @facility.postcode %></td>
         </tr>
         <tr>
           <th>施設住所</th>
-          <td><%= @facility.address %></td>
+          <td><%= @facility.prefecture_code.to_s %><%= @facility.address_city %><%= @facility.address_street %><%= @facility.address_building %></td>
         </tr>
         <tr>
           <th>施設ジャンル</th>

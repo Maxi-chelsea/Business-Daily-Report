@@ -1,15 +1,16 @@
 <%= render 'layouts/header' %>
 
-
-<div class="container">
+<div class="ccontainer-fluid px-5">
   <div class="row">
-    <div class="col">
-      <h2 class="heading">社員アカウント一覧</h2>
+    <!--通知機能の部分テンプレート-->
+    <div class='col-md-2'>
+      <%= render 'message' %>
+      <%= render 'comment' %>
+      <%= render 'favorite' %>
     </div>
-  </div>
-
-  <div class="row">
     <div class="col">
+      <h2 class="mt-3">社員アカウント一覧</h2>
+      <!--アカウント検索機能のフォーム-->
       <%= search_form_for(@q, url:employees_path) do |f| %>
         <%= f.label :id %>
         <%= f.text_field :id_eq %>
@@ -19,9 +20,6 @@
         <%= f.text_field :email_start %>
         <%= f.submit %>
       <% end %>
-    </div>
-    <!-- 新規作成を右端に寄せるために記述-->
-    <div class="col-md-10 offset-md-10">
       <!--管理者権限がある場合のみアカウント作成が可能にする-->
       <% if current_employee.admin == true %>
         <label class="font-weight-bold">
@@ -30,11 +28,6 @@
           <% end %>
         </label>
       <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>

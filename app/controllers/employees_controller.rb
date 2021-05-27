@@ -8,14 +8,13 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
-    @employees = Employee.all
-    # if current_employee.admin == true
-      # @items = @employees.items
-      # @daily_reports = @employees.daily_reports
-    # else
+    if current_employee.admin == true
+      @items = Item.all
+      @daily_reports = DailyReport.all
+    else
       @items = @employee.items
       @daily_reports = @employee.daily_reports
-    # end
+    end
 
   end
 

@@ -29,9 +29,8 @@ Rails.application.routes.draw do
       resources :daily_report_comments, only: [:create, :destroy]
     end
   end
+  
+  resources :notifications, only: :index
 
-  resources :users, only: [:index, :show, :new, :create] do
-
-end
 
 end

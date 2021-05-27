@@ -40,7 +40,7 @@ class FacilitiesController < ApplicationController
 
   private
   def facility_params
-    params.require(:facility).permit(:id, :name, :postal_code, :address, :responsible_person)
+    params.require(:facility).permit(:id, :name, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :responsible_person)
   end
 
   def params_int(facility_params)
