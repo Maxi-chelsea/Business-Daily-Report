@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <% if employee_signed_in? %>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
           <%= link_to image_tag("Logo_bussines_daily_support.jpg", width: "300px"), employee_path(current_employee.id) %>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -28,7 +28,7 @@
           </div>
         </nav>
       <% else %>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
           <%= image_tag "Logo_bussines_daily_support.jpg", width: "300px" %>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -46,6 +46,11 @@
         </nav>
       <% end %>
     </div>
+    <% if employee_signed_in? %>
+      <div class="col bg-dark text-white mt-5">
+        <p class="text-right">ようこそ　<%= current_employee.name %>　さん</p>
+      </div>
+    <% end %>
   </div>
 </div>
 

@@ -4,9 +4,9 @@ class Facility::ItemCommentsController < ApplicationController
     item = Item.find(params[:item_id])
     comment = current_employee.item_comments.new(item_comment_params)
     comment.item_id = item.id
-    # @post = comment.post
+    @item = comment.item
     comment.save
-    # @post.create_notification_comment!(current_employee, item_comment.id)
+    @item.create_notification_comment!(current_employee, item.id)
     redirect_to item_path(item)
   end
 

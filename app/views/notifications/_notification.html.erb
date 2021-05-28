@@ -1,0 +1,12 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="container" %>
+  <div class="row">
+    <div class="col-md-6.mx-auto">
+      <%= visitor.name %>さんが
+      <% if notification.action == favorite %>
+        の業務報告にいいねを押しました。
+      <% end %>
+    </div>
+  </div>

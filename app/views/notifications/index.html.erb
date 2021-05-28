@@ -1,7 +1,6 @@
-<% notifications = @notifications.where.not(visitor_id: current_user.id)
-  if notifications.exists?
-    <%= ::Temple::Utils.escape_html_safe((render notifications)) %>
-    <%= ::Temple::Utils.escape_html_safe((paginate notifications)) %> 
-  else
-    <p> 通知はありません </p>
-  end
+<% notifications = @notifications.where.not(visitor_id: current_employee.id) %>
+  <% if notifications.exists? %>
+    <%= render notifications %>
+  <% else %>
+    <p>通知がありません</p>
+<% end %>

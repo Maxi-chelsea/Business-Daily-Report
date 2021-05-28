@@ -1,26 +1,29 @@
 <%= render 'layouts/header' %>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <div class="float-left">
-        <div class="top-logo">
-        </div>
+<body class="top-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="mt-5 display-3">Business-Daily-Support</h1>
+        <p>〜日々の営業の効率化のために〜</p>
+      </div>
+    </div>
+    <div class="row text-center text-light">
+      <div class="col-4 ml-5 bg-secondary">
+        <h2>新規会社登録(管理者向け)</h2>
+        <%= link_to new_employee_registration_path do %>
+          新規登録はこちら
+        <% end %>
+      </div>
+      <div class="col-4  offset-md-3 bg-secondary">
+        <h2>ログイン</h2>
+        <%= link_to new_employee_session_path do %>
+          ログインはこちら
+        <% end %>
       </div>
     </div>
   </div>
-</div>
-
-
- <body class="top-body">
-  <div class="content">
-    <h1>Business-Daily-Support</h1>
-    <p>〜日々の営業の効率化のために〜</p>
-    <h2>ログイン</h2>
-      <%= link_to new_employee_session_path do %>
-        ログインはこちら
-      <% end %>
-  </div>
 </body>
+
+
 
 <%= render 'layouts/footer' %>

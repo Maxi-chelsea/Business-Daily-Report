@@ -14,8 +14,6 @@
         <%= search_form_for(@q, url:facilities_path) do |f| %>
           <%= f.label :施設名 %>
           <%= f.text_field :name %>
-          <%#= f.label :ジャンル %>
-          <%#= f.text_field :genre_start %>
           <%= f.submit %>
         <% end %>
         <label class="font-weight-bold">

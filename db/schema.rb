@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_015419) do
+ActiveRecord::Schema.define(version: 2021_05_27_104846) do
 
   create_table "daily_report_comments", force: :cascade do |t|
     t.integer "employee_id", null: false
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_05_27_015419) do
     t.integer "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "postcode"
-    t.integer "prefecture_code"
+    t.string "postcode"
+    t.string "prefecture_code"
     t.string "address_city"
     t.string "address_street"
     t.string "address_building"

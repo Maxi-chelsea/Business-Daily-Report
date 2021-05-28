@@ -2,16 +2,16 @@
 
 <div class='container-fluid px-5'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-2'>
       <%= render 'message' %>
       <%= render 'comment' %>
       <%= render 'favorite' %>
     </div>
-    <div class='col-md-4 offset-md-1'>
+    <div class='col-5 '>
       <h3 class="mt-3">新規案件</h3>
       <%= render 'item', items: @items %>
     </div>
-    <div class='col-md-4 offset-md-1'>
+    <div class='col-5 '>
       <h3 class="mt-3">新規業務報告</h3>
       <%= render 'daily_report', daily_reports: @daily_reports %>
     </div>
