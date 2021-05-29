@@ -2,29 +2,23 @@
 <div class='container'>
   <div class='row'>
     <div class='col'>
-      <h2>情報編集</h2>
+      <h2>新規社員登録</h2>
     </div>
   </div>
   <div class='row'>
     <div class='col '>
-      <%= form_with model:@employee, local: true do |f| %>
-        <h4>社員ID</h4>
-        <%= @employee.id %>
+      <%= form_with model:@employee, url: employees_path, method: :post, local: true do |f| %>
         <label class="font-weight-bold"><%= f.label :name, "社員名" %></label><br>
         <%= f.text_field :name %><br>
         <label class="font-weight-bold"><%= f.label :email, "メールアドレス" %></label><br>
         <%= f.text_field :email %><br>
-        <label class="font-weight-bold"><%= f.label :is_deleted, "ステータス" %></label><br>
-        <% if employee_signed_in? && current_employee.admin == true %>
-  	      <label>
-  	        <%= f.radio_button :is_deleted, :"有効", {:checked => true} %>
-  	        <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-  	        <%= f.radio_button :is_deleted, :"退職" %>
-  	        <%= f.label :is_deleted, "退職", {value: :true, style: "display: inline-block;"} %>
-  	      </label>
-  	   <% end %>
+        <label class="font-weight-bold"><%= f.label :password, "パスワード" %></label><br>
+        <%= f.text_field :password %><br>
         <%= f.submit "編集完了" %>
       <% end %>
     </div>
   </div>
 </div>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>

@@ -1,0 +1,42 @@
+<%= render 'layouts/header' %>
+
+<div class="container-fluid px-5">
+  <div class="row">
+    <div class="col">
+      <h2 class="mt-3">業務報告一覧</h2>
+      <label class="font-weight-bold">
+        <%= link_to new_daily_report_path do %>
+          <p>新規作成</p>
+        <% end %>
+      </label>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>作成日</th>
+            <th>報告者</th>
+            <th>タイトル</th>
+            <th colspan="2">施設名</th>
+          </tr>
+        </thead>
+        <% @daily_reports.each do |daily_report| %>
+        <tbody>
+          <tr>
+            <td><%= daily_report.created_at.to_s(:datetime_jp) %></td>
+            <td><%= daily_report.employee.name %></td>
+            <td><%= daily_report.title %></td>
+            <td><%= daily_report.facility.name %></td>
+            <td>
+              <%= link_to daily_report_path(daily_report) do %>
+                <button class="btn btn-primary">詳細へ</button>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>

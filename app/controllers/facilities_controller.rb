@@ -1,7 +1,9 @@
 class FacilitiesController < ApplicationController
 
   def index
-    @facilities = Facility.all
+    @facilities = Facility.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
+    @q = Facility.ransack(params[:q])
+    @facilities_all = @q.result
   end
 
   def show
@@ -38,7 +40,7 @@ class FacilitiesController < ApplicationController
 
   private
   def facility_params
-    params.require(:facility).permit(:id, :name, :postal_code, :address, :responsible_person)
+    params.require(:facility).permit(:id, :name, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :responsible_person)
   end
 
   def params_int(facility_params)

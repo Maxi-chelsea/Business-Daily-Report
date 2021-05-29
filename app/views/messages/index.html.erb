@@ -1,0 +1,36 @@
+<%= render 'layouts/header' %>
+
+<div class='container-fluid px-5'>
+  <div class='row'>
+    <div class='col-3 offset-2'>
+      <h2 class="mt-3">メッセージフォーム</h2>
+      <%= render 'messages/form', message: @message %>
+    </div>
+    <div class='col-5 offset-1'>
+      <h2 class="mt-3">メッセージ一覧</h2>
+      <table>
+        <% employee = Employee.find_by(id: @message.receive_employee_id) %>
+        <% @messages.each do |message| %>
+          <tbody>
+            <tr>
+              <th><%= message.employee.name %></th>
+              <th><span class="text-muted">posted at <%= message.created_at.to_s(:datetime_jp) %></th>
+              <th><%= message.content %></th>
+              <% if current_employee == message.employee %>
+                <th>
+                  <%= link_to employee_message_path(current_employee, message), method: :delete, data: { confirm: "You sure?" } do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </th>
+              <% end %>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>
+

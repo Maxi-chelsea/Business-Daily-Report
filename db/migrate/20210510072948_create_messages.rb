@@ -1,10 +1,9 @@
 class CreateMessages < ActiveRecord::Migration[5.2]
   def change
     create_table :messages do |t|
-      t.integer :employee_id, null: false
-      t.integer :receive_employee_id, null: false
-      t.string :title, null: false
-      t.text :content, null: false
+      t.text :content
+      t.references :employee, foreign_key: true
+      t.references :receive_employee, foreign_key: { to_table: :employees }
 
       t.timestamps
     end

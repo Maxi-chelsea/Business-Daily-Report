@@ -1,17 +1,34 @@
 class EmployeesController < ApplicationController
 
   def index
-    @employees = Employee.all
+
+    @employees = Employee.where(company_name:current_employee.company_name, company_code:current_employee.company_code)
+    @q = Employee.ransack(params[:q])
+    @employees_all = @q.result
   end
 
   def show
     @employee = Employee.find(params[:id])
+    if current_employee.admin == true
+      # 会社名と会社コードが一緒のデータのみを抽出するためにjoins及びwhereを使用
+      @items = Item.joins(:employee).where(employees: {company_name: @employee.company_name, company_code: @employee.company_code})
+      @daily_reports = DailyReport.joins(:employee).where(employees: {company_name: @employee.company_name, company_code: @employee.company_code})
+    else
+      @items = @employee.items
+      @daily_reports = @employee.daily_reports
+    end
+
   end
 
   def new
+    @employee = Employee.new
   end
 
   def create
+    employee = Employee.new(employee_params)
+    employee.save
+    byebug
+    redirect_to employees_path
   end
 
   def edit
@@ -35,7 +52,7 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:email, :name, :is_deleted, :admin)
+    params.require(:employee).permit(:company_name, :company_code, :email, :password, :name)
   end
 
 end

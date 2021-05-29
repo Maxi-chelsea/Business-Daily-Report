@@ -1,2 +1,0 @@
-class DairyReportsController < ApplicationController
-end

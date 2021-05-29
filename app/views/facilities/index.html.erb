@@ -1,45 +1,57 @@
 <%= render 'layouts/header' %>
 
-<div class="container">
+<div class="container-fluid px-5">
   <div class="row">
     <div class="col">
-      <%= link_to new_facility_path do %>
-        <p>新規作成</p>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>施設ID</th>
-            <th>施設名</th>
-            <th>施設ジャンル</th>
-            <th>案件名</th>
-            <th></th>
-          </tr>
-        </thead>
-        <% @facilities.each do |facility| %>
-        <tbody>
-          <tr>
-            <td><%= facility.id %></td>
-            <td>
-              <%= link_to facility_path(facility.id) do %>
-                <%= facility.name %>
-              <% end %>
-            </td>
-            <td><%= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
-            <td><%#= facility.item.name %></td>
-            <td>
-              <%= link_to edit_facility_path(facility.id)  do %>
-                編集する
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
+      <h2 class="mt-3">施設一覧</h2>
+      <div class="mt-4">
+        <%= search_form_for(@q, url:facilities_path) do |f| %>
+          <%= f.label :施設名 %>
+          <%= f.text_field :name %>
+          <%= f.submit %>
         <% end %>
-      </table>
+        <label class="font-weight-bold">
+          <%= link_to new_facility_path do %>
+            <p>新規作成</p>
+          <% end %>
+        </label>
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>施設ID</th>
+              <th>施設名</th>
+              <th>施設状況</th>
+              <th>施設ジャンル</th>
+              <th colspan="2">登録案件名</th>
+            </tr>
+          </thead>
+          <% @facilities.each do |facility| %>
+            <tbody>
+              <tr>
+                <td><%= facility.id %></td>
+                <td>
+                  <%= link_to facility_path(facility.id) do %>
+                    <%= facility.name %>
+                  <% end %>
+                </td>
+                <td><%= facility.is_closed %></td>
+                <td><%= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
+                <td><%= facility.activ_item_titles %></td>
+                <td>
+                  <% if facility.employee_id == current_employee.id %>
+                    <%= link_to edit_facility_path(facility.id) do %>
+            　         <button class="btn btn-primary">編集する</button>
+          　         <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>
