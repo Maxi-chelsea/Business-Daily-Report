@@ -2,12 +2,6 @@
 
 <div class='container-fluid px-5'>
   <div class='row'>
-    <!--通知機能の部分テンプレート-->
-    <div class='col-2 mr-1'>
-      <%= render 'employees/message' %>
-      <%= render 'employees/comment' %>
-      <%= render 'employees/favorite' %>
-    </div>
     <div class='col align-self-center'>
       <h2 class="p-3">案件新規登録</h2>
       <%= form_with model:@item, url: items_path, local:true do |f| %>
@@ -44,3 +38,6 @@
     </div>
   </div>
 </div>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>

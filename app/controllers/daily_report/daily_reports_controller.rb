@@ -1,7 +1,7 @@
 class DailyReport::DailyReportsController < ApplicationController
 
   def index
-    @daily_reports = DailyReport.all
+    @daily_reports = DailyReport.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
   end
 
   def show
@@ -51,8 +51,8 @@ class DailyReport::DailyReportsController < ApplicationController
     redirect_to daily_reports_path
   end
 
-  
-  
+
+
 
   private
 

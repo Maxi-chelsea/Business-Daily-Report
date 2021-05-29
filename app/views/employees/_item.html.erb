@@ -1,6 +1,7 @@
 <table class='table table-bordered table-striped table-hover'>
   <thead>
     <tr>
+      <!--管理者権限の時のみ担当者を表示-->
       <% if current_employee.admin == true %>
         <th>担当者</th>
       <% end %>
@@ -12,6 +13,7 @@
   <tbody>
     <% items.each do |item| %>
       <tr>
+        <!--管理者権限の時のみ担当者を表示-->
         <% if current_employee.admin == true %>
           <td><%= item.employee.name %></td>
         <% end %>

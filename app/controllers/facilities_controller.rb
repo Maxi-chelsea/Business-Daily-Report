@@ -1,7 +1,7 @@
 class FacilitiesController < ApplicationController
 
   def index
-    @facilities = Facility.all
+    @facilities = Facility.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
     @q = Facility.ransack(params[:q])
     @facilities_all = @q.result
   end

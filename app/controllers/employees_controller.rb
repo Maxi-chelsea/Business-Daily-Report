@@ -1,7 +1,8 @@
 class EmployeesController < ApplicationController
 
   def index
-    @employees = Employee.all
+
+    @employees = Employee.where(company_name:current_employee.company_name, company_code:current_employee.company_code)
     @q = Employee.ransack(params[:q])
     @employees_all = @q.result
   end
@@ -9,8 +10,9 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     if current_employee.admin == true
-      @items = Item.all
-      @daily_reports = DailyReport.all
+      # 会社名と会社コードが一緒のデータのみを抽出するためにjoins及びwhereを使用
+      @items = Item.joins(:employee).where(employees: {company_name: @employee.company_name, company_code: @employee.company_code})
+      @daily_reports = DailyReport.joins(:employee).where(employees: {company_name: @employee.company_name, company_code: @employee.company_code})
     else
       @items = @employee.items
       @daily_reports = @employee.daily_reports
@@ -50,7 +52,7 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:email, :password, :name)
+    params.require(:employee).permit(:company_name, :company_code, :email, :password, :name)
   end
 
 end

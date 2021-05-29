@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>報告日</th>
+      <!--管理者権限の時のみ担当者を表示-->
       <% if current_employee.admin == true %>
         <th>担当者</th>
       <% end %>
@@ -13,6 +14,7 @@
     <% daily_reports.each do |daily_report| %>
       <tr>
         <td><%= daily_report.created_at.to_s(:datetime_jp) %></td>
+        <!--管理者権限の時のみ担当者を表示-->
         <% if current_employee.admin == true %>
           <td><%= daily_report.employee.name %></td>
         <% end %>
