@@ -23,6 +23,7 @@ class DailyReport::DailyReportsController < ApplicationController
   def create
     daily_report = current_employee.daily_reports.new(daily_report_params)
     daily_report.employee_id = current_employee.id
+    daily_report.score = Language.get_data(daily_report_params[:content])
     if daily_report.save
       redirect_to daily_reports_path
     else
@@ -41,6 +42,7 @@ class DailyReport::DailyReportsController < ApplicationController
 
   def update
     @daily_report = DailyReport.find(params[:id])
+    @daily_report.score = Language.get_data(daily_report_params[:content])
     @daily_report.update(daily_report_params)
     redirect_to daily_report_path(@daily_report)
   end
@@ -50,9 +52,6 @@ class DailyReport::DailyReportsController < ApplicationController
     daily_report.destroy
     redirect_to daily_reports_path
   end
-
-
-
 
   private
 

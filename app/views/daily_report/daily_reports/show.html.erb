@@ -30,6 +30,10 @@
           <th>面談内容</th>
           <th><%= @daily_report.content %></th>
         </tr>
+        <tr>
+          <th>面談スコア</th>
+          <th><%= @daily_report.score %></span></th>
+        </tr>
       </table>
       <!--作成者だけに編集ボタンと削除ボタンを表示-->
       <% if @daily_report.employee_id == current_employee.id %>

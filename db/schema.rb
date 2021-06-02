@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_104846) do
+ActiveRecord::Schema.define(version: 2021_06_02_112732) do
 
   create_table "daily_report_comments", force: :cascade do |t|
     t.integer "employee_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_104846) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "employees", force: :cascade do |t|
@@ -46,6 +47,18 @@ ActiveRecord::Schema.define(version: 2021_05_27_104846) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "employee_id"
+    t.string "title"
+    t.text "body"
+    t.boolean "disp_flg"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "allDay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "facilities", force: :cascade do |t|
