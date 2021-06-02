@@ -9,6 +9,8 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    @events = Event.where(employee_id: @employee.id)
+    @event = Event.new
     if current_employee.admin == true
       # 会社名と会社コードが一緒のデータのみを抽出するためにjoins及びwhereを使用
       @items = Item.joins(:employee).where(employees: {company_name: @employee.company_name, company_code: @employee.company_code})

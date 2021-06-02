@@ -79,7 +79,12 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+# 検索機能要Gem
 gem 'ransack'
-
+# 住所検索用Gem
 gem 'jp_prefecture'
-
+# カレンダー機能用Gem
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+# google Natural Language API用のkey
+gem 'dotenv-rails'
