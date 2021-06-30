@@ -13,9 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ .icon {
+  width: 20px;
+  height: 10px;
+ }
 
  .list {
   list-style: none;
