@@ -4,7 +4,7 @@
     <title>BusinessDailySupport</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
 
@@ -13,6 +13,64 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">BusinessDailySupport</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto ">
+            <% if employee_signed_in? %>
+              <li class="nav-item nav-link">
+                <%= link_to 'マイページ', employee_path(current_employee.id), class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to '社員一覧', employees_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to '施設一覧', facilities_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to '案件一覧', items_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to '業務報告', daily_reports_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: "bg-dark text-white" %>
+              </li>
+            <% else %>
+              <li class="nav-item nav-link">
+                <%= link_to 'Top', root_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to 'About', home_about_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to 'Sing up', new_employee_session_path, class: "bg-dark text-white" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to 'login', new_employee_session_path, class: "bg-dark text-white" %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,26 +1,18 @@
-<%= render 'layouts/header' %>
-<body class="top-body">
-  <!--写真挿入用-->
-  <div class="bgImg src1"></div>
-  <div class="bgImg src2"></div>
-  <div class="bgImg src3"></div>
-  <div class="bgImg src4"></div>
-  <div class="container-fluid">
-    <div class="row pb-5 mb-5">
-      <div class="col text-center">
-        <h1 class="mt-5 display-3">Business-Daily-Support</h1>
-        <p>〜日々の営業の効率化のために〜</p>
-      </div>
-    </div>
-    <div class='sign_in_log-in'>
-      <div class="row text-center text-light pt-5 mt-5">
-        <div class="col-2 offset-md-3 bg-secondary">
+
+  <body class="top-body">
+    <div class="container-fluid">
+      <div class="row m-auto ">
+        <div class="col-12 text-center">
+          <h1 class="mt-5 display-3">Business-Daily-Support</h1>
+          <p class="m-5">〜日々の営業の効率化のために〜</p>
+        </div>
+        <div class="col-6 text-center">
           <h2 class="mt-2">新規登録</h2>
           <%= link_to new_employee_registration_path do %>
             <p class="text-info">新規登録はこちら</p>
           <% end %>
         </div>
-        <div class="col-2 offset-md-2 bg-secondary">
+        <div class="col-6 text-center">
           <h2 class="mt-2">ログイン</h2>
           <%= link_to new_employee_session_path do %>
             <p class="text-info">ログインはこちら</p>
@@ -28,8 +20,4 @@
         </div>
       </div>
     </div>
-  </div>
-</body>
-<footer>
-  <%= render 'layouts/footer' %>
-</footer>
+  </body>
