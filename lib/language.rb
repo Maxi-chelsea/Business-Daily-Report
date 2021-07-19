@@ -24,7 +24,7 @@ module Language
       # APIレスポンス出力
       response_body = JSON.parse(response.body)
       if (error = response_body['error']).present?
-        raise error['message']
+        fail error['message']
       else
         response_body['documentSentiment']['score']
       end

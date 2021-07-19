@@ -16,8 +16,8 @@ class Item < ApplicationRecord
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment!(current_employee, item_id, employee_id) if temp_ids.blank?
   end
-  
-  def save_notification_comment!(current_employee, item_id, visited_id)
+
+  def save_notification_comment!(_current_employee, _item_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       item_id: id,
@@ -31,5 +31,4 @@ class Item < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
 end

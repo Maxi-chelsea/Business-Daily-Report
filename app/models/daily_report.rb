@@ -14,10 +14,10 @@ class DailyReport < ApplicationRecord
   validates :time, presence: true
   validates :person, presence: true
   validates :content, presence: true
-  
+
   def create_notification_favorite!(current_employee)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and daily_report_id = ? and action = ? ", current_employee.id, employee_id, id, 'favorite'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and daily_report_id = ? and action = ? ', current_employee.id, employee_id, id, 'favorite'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_employee.active_notifications.new(
@@ -32,7 +32,4 @@ class DailyReport < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
-  
-
 end

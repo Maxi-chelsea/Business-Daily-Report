@@ -25,12 +25,12 @@ class Employees::SessionsController < Devise::SessionsController
   def reject_employee
     @employee = Employee.find_by(email: params[:employee][:email].downcase)
     if @employee
-      if (@employee.valid_password?(params[:employee][:password]) && (@employee.active_for_authentication? == false))
-        flash[:error] = "退会済みです。"
+      if @employee.valid_password?(params[:employee][:password]) && (@employee.active_for_authentication? == false)
+        flash[:error] = '退会済みです。'
         redirect_to root_path
       end
     else
-      flash[:error] = "必須項目を入力してください。"
+      flash[:error] = '必須項目を入力してください。'
     end
   end
 

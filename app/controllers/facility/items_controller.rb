@@ -1,7 +1,6 @@
 class Facility::ItemsController < ApplicationController
-
   def index
-    @items = Item.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
+    @items = Item.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
     @q = Item.ransack(params[:q])
     @item_all = @q.result
   end
@@ -15,11 +14,10 @@ class Facility::ItemsController < ApplicationController
     @employee = current_employee
     @facilities = @employee.facilities
     @facilities_hash = {}
-    @facilities.each {|facility|
+    @facilities.each do|facility|
       @facilities_hash[facility.name] = facility.id
-    }
+    end
     @item = Item.new
-
   end
 
   def create
@@ -50,5 +48,4 @@ class Facility::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:facility_id, :title, :genre, :status, :content)
   end
-
 end
