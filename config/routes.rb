@@ -7,15 +7,17 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
 
   resources :employees, only: [:index, :show, :new, :create, :edit, :update] do
+
     resources :messages, only: [:index, :create, :destroy]
-    member do
-      get :followings
-      get :followers
-      get :favorites
-    end
+      member do
+        get :followings
+        get :followers
+        get :favorites
+      end
   end
 
   resources :events
+
 
   scope module: :facility do
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
@@ -33,4 +35,6 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: :index
+
+
 end
