@@ -1,7 +1,6 @@
 class FacilitiesController < ApplicationController
-
   def index
-    @facilities = Facility.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
+    @facilities = Facility.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
     @q = Facility.ransack(params[:q])
     @facilities_all = @q.result
   end
@@ -35,19 +34,17 @@ class FacilitiesController < ApplicationController
     @facility = Facility.find(params[:id])
     @facility.update(facility_params)
     redirect_to facility_path(@facility)
-
   end
 
   private
+
   def facility_params
     params.require(:facility).permit(:id, :name, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :responsible_person)
   end
 
   def params_int(facility_params)
-    facility_params.each do |key,value|
-      if integer_string?(value)
-        facility_params[key]=value.to_i
-      end
+    facility_params.each do |key, value|
+      facility_params[key] = value.to_i if integer_string?(value)
     end
   end
 end

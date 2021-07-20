@@ -2,23 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top-body {
-  background-image: image-url("BDS_top1.jpg");
-  -webkit-background-size:cover;
-  -moz-background-size:cover;
-  -o-background-size:cover;
-  background-size:cover;
+
+
+.bx-wrapper{
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+.bx-controls{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+.bx-controls-direction{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
-.content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  margin: 40px auto;
-  background: rgba(22,22,22, 0.5);
-  width: 100%;
-  max-width: 960px;
-  border-radius: 5px;
-  padding-top: 32px;
-  padding-bottom: 32px;
+.top-image {
+  width: 1000px;
+  height: 400px;
+}
+
+.top-example {
+  width: 300px;
+  height: 200px;
 }

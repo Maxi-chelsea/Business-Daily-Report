@@ -1,7 +1,6 @@
 class DailyReport::DailyReportsController < ApplicationController
-
   def index
-    @daily_reports = DailyReport.joins(:employee).where(employees: {company_name: current_employee.company_name, company_code: current_employee.company_code})
+    @daily_reports = DailyReport.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
   end
 
   def show
@@ -13,11 +12,10 @@ class DailyReport::DailyReportsController < ApplicationController
     @employee = current_employee
     @facilities = @employee.facilities
     @facilities_hash = {}
-    @facilities.each {|facility|
+    @facilities.each do|facility|
       @facilities_hash[facility.name] = facility.id
-    }
+    end
     @daily_report = DailyReport.new
-
   end
 
   def create
@@ -35,9 +33,9 @@ class DailyReport::DailyReportsController < ApplicationController
     @daily_report = DailyReport.find(params[:id])
     @facilities = current_employee.facilities
     @facilities_hash = {}
-    @facilities.each {|facility|
+    @facilities.each do|facility|
       @facilities_hash[facility.name] = facility.id
-    }
+    end
   end
 
   def update
@@ -58,5 +56,4 @@ class DailyReport::DailyReportsController < ApplicationController
   def daily_report_params
     params.require(:daily_report).permit(:facility_id, :title, :time, :person, :content)
   end
-
 end

@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def index
     @employee = Employee.find(params[:employee_id])
     send_ids = current_employee.messages.where(receive_employee_id: @employee.id).pluck(:id)
@@ -33,5 +32,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
-
 end

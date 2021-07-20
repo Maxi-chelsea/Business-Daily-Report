@@ -24,9 +24,6 @@ class Facility < ApplicationRecord
   }, _prefix: true
 
   def activ_item_titles
-    items.where(status: [0, 1]).pluck(:title).join(" / ")
+    items.where(status: [0, 1]).pluck(:title).join(' / ')
   end
-
-
-
 end

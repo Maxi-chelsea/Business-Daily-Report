@@ -1,5 +1,4 @@
 class DailyReport::DailyReportCommentsController < ApplicationController
-
   def create
     daily_report = DailyReport.find(params[:daily_report_id])
     comment = current_employee.daily_report_comments.new(daily_report_comment_params)
@@ -20,5 +19,4 @@ class DailyReport::DailyReportCommentsController < ApplicationController
   def daily_report_comment_params
     params.require(:daily_report_comment).permit(:comment)
   end
-
 end
