@@ -1,4 +1,7 @@
 class EmployeesController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+  
+  
   def index
     @employees = Employee.where(company_name: current_employee.company_name, company_code: current_employee.company_code)
     @q = Employee.ransack(params[:q])
@@ -47,8 +50,17 @@ class EmployeesController < ApplicationController
       format.html { redirect_to facilities_path, notice: 'Conversation was successfully destroyed.' }
     end
   end
+  
+  def search
+    @results = @q.result.where(company_name: current_employee.company_name, company_code: current_employee.company_code)
+  end
 
   private
+  
+  def set_q
+    @q = Employee.ransack(params[:q])
+  end
+  
 
   def employee_params
     params.require(:employee).permit(:company_name, :company_code, :email, :password, :name)

@@ -5,17 +5,15 @@
       <h2 class="mt-5 mb-4">社員アカウント一覧</h2>
       <!--アカウント検索機能のフォーム-->
       <div class="search">
-        <%= search_form_for(@q, url:employees_path) do |f| %>
-          <%= f.label :id %>
-          <%= f.text_field :id_eq %>
-          <%= f.label :名前 %>
-          <%= f.text_field :name_start %>
-          <%= f.label :メールアドレス %>
-          <%= f.text_field :email_start %>
-          <%= f.submit %>
+        <h1>ユーザー検索</h1>
+        <%= search_form_for @q, url: search_employees_path do |f| %>
+          <%= f.label :name_cont, 'ユーザー名' %>
+          <%= f.search_field :name_cont %>
+          <br>
+          <%= f.submit '検索' %>
         <% end %>
       </div>
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-striped mt-3">
         <thead class="thead-dark">
           <tr>
             <th scope="col">ID</th>

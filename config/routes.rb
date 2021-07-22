@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
 
-  resources :employees, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :employees do
+    collection do
+      get 'search'
+    end
 
     resources :messages, only: [:index, :create, :destroy]
       member do
