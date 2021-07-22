@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :facilities, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :facilities do
+    collection do
+      get 'search'
+    end
+  end
 
   scope module: :daily_report do
     resources :daily_reports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

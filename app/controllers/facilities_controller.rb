@@ -1,4 +1,7 @@
 class FacilitiesController < ApplicationController
+
+  before_action :set_q, only: [:index, :search]
+
   def index
     @facilities = Facility.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
     @q = Facility.ransack(params[:q])
@@ -36,7 +39,15 @@ class FacilitiesController < ApplicationController
     redirect_to facility_path(@facility)
   end
 
+  def search
+    @results = @q.result.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
+  end
+
   private
+
+  def set_q
+    @q = Facility.ransack(params[:q])
+  end
 
   def facility_params
     params.require(:facility).permit(:id, :name, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :responsible_person)

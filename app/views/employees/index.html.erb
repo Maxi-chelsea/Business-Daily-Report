@@ -5,11 +5,9 @@
       <h2 class="mt-5 mb-4">社員アカウント一覧</h2>
       <!--アカウント検索機能のフォーム-->
       <div class="search">
-        <h1>ユーザー検索</h1>
         <%= search_form_for @q, url: search_employees_path do |f| %>
           <%= f.label :name_cont, 'ユーザー名' %>
           <%= f.search_field :name_cont %>
-          <br>
           <%= f.submit '検索' %>
         <% end %>
       </div>
