@@ -4,6 +4,7 @@ class EmployeesController < ApplicationController
   
   def index
     @employees = Employee.where(company_name: current_employee.company_name, company_code: current_employee.company_code)
+    @employee_all = @employees.paginate(page: params[:page], per_page: 5)
     @q = Employee.ransack(params[:q])
     @employees_all = @q.result
   end
