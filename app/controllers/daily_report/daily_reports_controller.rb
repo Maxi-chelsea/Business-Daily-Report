@@ -1,4 +1,6 @@
 class DailyReport::DailyReportsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+
   def index
     @daily_reports = DailyReport.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
   end
@@ -51,7 +53,15 @@ class DailyReport::DailyReportsController < ApplicationController
     redirect_to daily_reports_path
   end
 
+  def search
+    @results = @q.result.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
+  end
+
   private
+
+  def set_q
+    @q = DailyReport.ransack(params[:q])
+  end
 
   def daily_report_params
     params.require(:daily_report).permit(:facility_id, :title, :time, :person, :content)

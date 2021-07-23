@@ -16,7 +16,8 @@
               <th>施設名</th>
               <th>施設状況</th>
               <th>施設ジャンル</th>
-              <th colspan="2">登録案件名</th>
+              <th>登録案件名</th>
+              <th></th>
             </tr>
           </thead>
           <% @results.each do |facility| %>
@@ -31,17 +32,18 @@
                 <td><%= facility.is_closed %></td>
                 <td><%= I18n.t("enums.facility.genre.#{facility.genre}") %></td>
                 <td><%= facility.activ_item_titles %></td>
-                <td>
-                  <% if facility.employee_id == current_employee.id %>
+                <% if facility.employee_id == current_employee.id %>
+                  <td>
                     <%= link_to edit_facility_path(facility.id) do %>
             　         <button class="btn btn-primary">編集する</button>
           　         <% end %>
-                  <% end %>
-                </td>
+          　       </td>
+          　     <% end %>
               </tr>
             </tbody>
           <% end %>
         </table>
+        <%= link_to '施設一覧へ', facilities_path %>
       </div>
     </div>
   </div>

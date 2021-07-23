@@ -88,3 +88,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 # google Natural Language API用のkey
 gem 'dotenv-rails'
+
+# 表示分割用
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

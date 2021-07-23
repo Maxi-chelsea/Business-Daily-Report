@@ -33,13 +33,13 @@
             <td scope="row"><%= employee.is_deleted %></td>
             <td scope="row">
               <%= link_to employee_messages_path(employee) do %>
-                メッセージ
+                <button type="button" class="btn btn-primary btn-sm">メッセージ</button>
               <% end %>
             </td>
             <% if employee_signed_in? && current_employee.admin == true %>
               <td scope="row">
                 <%= link_to edit_employee_path(employee.id) do %>
-                  編集する
+                  <button type="button" class="btn btn-success btn-sm">編集する</button>
                 <% end %>
               </td>
             <% end %>

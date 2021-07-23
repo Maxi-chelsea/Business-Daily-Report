@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :daily_report do
-    resources :daily_reports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :daily_reports do
+      collection do
+        get 'search'
+      end
       resource :favorites, only: [:create, :destroy]
       resources :daily_report_comments, only: [:create, :destroy]
     end
