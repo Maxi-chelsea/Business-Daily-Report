@@ -3,6 +3,7 @@ class DailyReport::DailyReportsController < ApplicationController
 
   def index
     @daily_reports = DailyReport.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
+    @daily_reports_all = @daily_reports.all.order(created_at: :desc)
   end
 
   def show

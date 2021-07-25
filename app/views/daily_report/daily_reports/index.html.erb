@@ -22,7 +22,7 @@
             <th colspan="2">施設名</th>
           </tr>
         </thead>
-        <% @daily_reports.each do |daily_report| %>
+        <% @daily_reports_all.each do |daily_report| %>
         <tbody>
           <tr>
             <td><%= daily_report.created_at.to_s(:datetime_jp) %></td>
