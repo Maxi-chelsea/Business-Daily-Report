@@ -92,3 +92,6 @@ gem 'dotenv-rails'
 # 表示分割用
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+
+# map表示用（緯度・軽度の検索）
+gem "geocoder"

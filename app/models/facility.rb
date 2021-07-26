@@ -3,16 +3,9 @@ class Facility < ApplicationRecord
   has_many :items
   has_many :daily_reports
 
-  include JpPrefecture
-  jp_prefecture :prefecture_code, method_name: :pref
-
-  def prefecture_name
-    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-  end
-
-  def prefecture_name=(prefecture_name)
-    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-  end
+  # 緯度・軽度取得
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   enum is_closed: { '診療中': false, '閉院': true }
 
