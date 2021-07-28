@@ -19,7 +19,7 @@
           <td><%= daily_report.employee.name %></td>
         <% end %>
         <td>
-          <%= link_to daily_report.title, daily_report_path(daily_report) %>
+          <%= link_to daily_report.title, daily_report_path(daily_report), class: 'text-white' %>
         </td>
         <td><%= daily_report.facility.name %></td>
       </tr>

@@ -1,82 +1,75 @@
-
-  <%= render 'layouts/header' %>
-
-  <div class="container-fluid px-5">
-    <div class="row">
-      <div class="col-9">
-        <h2 class="mt-3">案件情報</h2>
-        <!--案件情報の表示-->
-        <table class="table table-striped table-bordered table-hover mt-3">
-          <tr>
-            <th>案件名</th>
-            <th><%= @item.title %></th>
-          </tr>
-          <tr>
-            <th>担当者</th>
-            <th><%= @item.employee.name %></th>
-          </tr>
-          <tr>
-            <th>施設名</th>
-            <th><%= @item.facility.name %></th>
-          </tr>
-          <tr>
-            <th>案件ジャンル</th>
-            <th><%= @item.genre %></th>
-          </tr>
-          <tr>
-            <th>案件ステータス</th>
-            <th><%= @item.status %></th>
-          </tr>
-          <tr>
-            <th>案件内容</th>
-            <th><%= @item.content %></th>
-          </tr>
-          <tr>
-            <th>作成日</th>
-            <th><%= @item.created_at.to_s(:datetime_jp) %></th>
-          </tr>
-        </table>
-        <!--作成者だけに編集ボタンと削除ボタンを表示-->
-        <% if @item.employee_id == current_employee.id %>
-          <%= link_to edit_item_path(@item) do %>
-            <button class="btn btn-primary">編集する</button>
-          <% end %>
-          <%= link_to item_path(@item), method: :delete do %>
-            <button type="button" class="btn btn-danger">削除する</button>
-          <% end %>
+<div class="container-fluid px-5">
+  <div class="row">
+    <div class="col-9">
+      <h2 class="mt-3">案件情報</h2>
+      <h2 class="mt-5 mb-5">案件情報</h2>
+      <!--案件情報の表示-->
+      <table class="table table-striped table-bordered table-hover mt-3">
+        <tr>
+          <th>案件名</th>
+          <th><%= @item.title %></th>
+        </tr>
+        <tr>
+          <th>担当者</th>
+          <th><%= @item.employee.name %></th>
+        </tr>
+        <tr>
+          <th>施設名</th>
+          <th><%= link_to @item.facility.name, facility_path(@item.facility.id), class: 'text-white' %></th>
+        </tr>
+        <tr>
+          <th>案件ジャンル</th>
+          <th><%= @item.genre %></th>
+        </tr>
+        <tr>
+          <th>案件ステータス</th>
+          <th><%= @item.status %></th>
+        </tr>
+        <tr>
+          <th>案件内容</th>
+          <th><%= @item.content %></th>
+        </tr>
+        <tr>
+          <th>作成日</th>
+          <th><%= @item.created_at.to_s(:datetime_jp) %></th>
+        </tr>
+      </table>
+      <!--作成者だけに編集ボタンと削除ボタンを表示-->
+      <% if @item.employee_id == current_employee.id %>
+        <%= link_to "編集する", edit_item_path(@item), class: "m-2  btn btn-primary" %>
+        <%= link_to item_path(@item), method: :delete do %>
+          <button type="button" class="m-2 btn btn-danger">削除する</button>
         <% end %>
-        <!--コメント一覧-->
-        <div class="comments">
-          <h4 class="mt-3">コメント</h4>
-            <table>
-              <% @item.item_comments.each do |item_comment| %>
-              <tbody>
-                <tr>
-                  <th><%= item_comment.employee.name %></th>
-                  <th><%= item_comment.created_at.to_s(:datetime_jp) %></th>
-                  <th><%= item_comment.comment %></th>
-                  <% if item_comment.employee == current_employee %>
-                    <th>
-                      <%= link_to item_item_comment_path(@item, item_comment), method: :delete do %>
-                        <i class="fas fa-trash"></i>
-                      <% end %>
-                    </th>
-                  <% end %>
-                </tr>
-              </tbody>
-              <% end %>
-            </table>
-        </div>
-        <!--コメント投稿機能-->
-        <div class="new-comment mt-3">
-          <%= form_with(model:[@item, @item_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
+      <% end %>
+      <!--コメント一覧-->
+      <div class="comments">
+        <h4 class="mt-4">コメント</h4>
+        <table>
+          <% @item.item_comments.each do |item_comment| %>
+            <tbody>
+              <tr>
+                <th><%= item_comment.employee.name %></th>
+                <th><%= item_comment.created_at.to_s(:datetime_jp) %></th>
+                <th><%= item_comment.comment %></th>
+                <% if item_comment.employee == current_employee %>
+                  <th>
+                    <%= link_to item_item_comment_path(@item, item_comment), method: :delete do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
+                  </th>
+                <% end %>
+              </tr>
+            </tbody>
           <% end %>
-        </div>
+        </table>
+      </div>
+      <!--コメント投稿機能-->
+      <div class="new-comment mt-3">
+        <%= form_with(model:[@item, @item_comment], local: true) do |f| %>
+          <%= f.text_area :comment, size: "100x5", placeholder: "コメントをここに" %>
+          <br><%= f.submit "送信する", class: "mt-3 mb-5 btn btn-success" %>
+        <% end %>
       </div>
     </div>
   </div>
-<footer>
-  <%= render 'layouts/footer' %>
-</footer>
+</div>
