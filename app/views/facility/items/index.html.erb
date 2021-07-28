@@ -35,9 +35,7 @@
             <td><%= item.facility.name %></td>
             <td><%= item.genre %></td>
             <td>
-              <%= link_to item_path(item.id) do %>
-                <%= item.title %>
-              <% end %>
+              <%= link_to item.title, item_path(item.id), class: 'text-white' %>
             </td>
             <td><%= item.status %></td>
           </tr>

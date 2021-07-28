@@ -30,9 +30,8 @@
             <td><%= daily_report.title %></td>
             <td><%= daily_report.facility.name %></td>
             <td>
-              <%= link_to daily_report_path(daily_report) do %>
-                <button class="btn btn-primary">詳細へ</button>
-              <% end %>
+              <%= link_to "詳細へ", daily_report_path(daily_report), class: "btn btn-primary" %>
+
             </td>
           </tr>
         </tbody>
