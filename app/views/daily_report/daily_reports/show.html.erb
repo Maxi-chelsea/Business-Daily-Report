@@ -37,10 +37,10 @@
       <!--作成者だけに編集ボタンと削除ボタンを表示-->
       <% if @daily_report.employee_id == current_employee.id %>
         <%= link_to edit_daily_report_path(@daily_report) do %>
-          <button class="btn btn-primary">編集する</button>
+          <button class="m-2 btn btn-primary">編集する</button>
         <% end %>
         <%= link_to daily_report_path(@daily_report), method: :delete do %>
-          <button type="button" class="btn btn-danger">削除する</button>
+          <button type="m-2 button" class="btn btn-danger">削除する</button>
         <% end %>
       <% end %>
       <!--コメント一覧-->
@@ -76,13 +76,13 @@
       <div class="favorite mt-5 mb-5">
         <% if @daily_report.favorited_by?(current_employee) %>
           <p>
-            <%= link_to daily_report_favorites_path(@daily_report), method: :delete, remote: true do %>
+            <%= link_to daily_report_favorites_path(@daily_report), method: :delete, remote: true, class: 'text-danger' do %>
               ♥<%= @daily_report.favorites.count %> いいね
             <% end %>
           </p>
         <% else %>
           <p>
-            <%= link_to daily_report_favorites_path(@daily_report), method: :post, remote: true do %>
+            <%= link_to daily_report_favorites_path(@daily_report), method: :post, remote: true, class: 'text-white' do %>
               ♡<%= @daily_report.favorites.count %> いいね
             <% end %>
           </p>
