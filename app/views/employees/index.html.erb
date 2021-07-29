@@ -13,34 +13,26 @@
       <table class="table table-bordered table-striped mt-3 ">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">社員名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">ステータス</th>
-            <th scope="col"></th>
+            <th scope="col", class="p-4">ID</th>
+            <th scope="col", class="p-4">社員名</th>
+            <th scope="col", class="p-4">メールアドレス</th>
+            <th scope="col", class="p-4">ステータス</th>
+            <th scope="col", class="p-4"></th>
             <% if employee_signed_in? && current_employee.admin == true %>
-            <th scope="col"></th>
-              <% end %>
+              <th scope="col", class="p-4"></th>
+            <% end %>
           </tr>
         </thead>
         <% @employee_all.each do |employee| %>
         <tbody>
           <tr>
-            <td scope="row"><%= employee.id %></td>
-            <td scope="row"><%= employee.name %></td>
-            <td scope="row"><%= employee.email %></td>
-            <td scope="row"><%= employee.is_deleted %></td>
-            <td scope="row">
-              <%= link_to employee_messages_path(employee) do %>
-                <button type="button" class="btn btn-primary btn-sm">メッセージ</button>
-              <% end %>
-            </td>
+            <td scope="row", class="p-4"><%= employee.id %></td>
+            <td scope="row", class="p-4"><%= employee.name %></td>
+            <td scope="row", class="p-4"><%= employee.email %></td>
+            <td scope="row", class="p-4"><%= employee.is_deleted %></td>
+            <td scope="row", class="p-4"><%= link_to 'メッセージ', employee_messages_path(employee), class: "btn btn-primary btn-sm" %></td>
             <% if employee_signed_in? && current_employee.admin == true %>
-              <td scope="row">
-                <%= link_to edit_employee_path(employee.id) do %>
-                  <button type="button" class="btn btn-success btn-sm">編集する</button>
-                <% end %>
-              </td>
+              <td scope="row"><%= link_to '編集する', edit_employee_path(employee.id), class: " mt-3 btn btn-success btn-sm" %></td>
             <% end %>
           </tr>
         </tbody>
