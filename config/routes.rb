@@ -23,7 +23,10 @@ Rails.application.routes.draw do
 
 
   scope module: :facility do
-    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :items do
+      collection do
+      get 'search'
+    end
       resources :item_comments, only: [:create, :destroy]
     end
   end

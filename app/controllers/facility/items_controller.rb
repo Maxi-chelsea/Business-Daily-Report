@@ -42,6 +42,10 @@ class Facility::ItemsController < ApplicationController
     item.destroy
     redirect_to items_path
   end
+  
+  def search
+    @results = @q.result.where(company_name: current_employee.company_name, company_code: current_employee.company_code)
+  end
 
   private
 
