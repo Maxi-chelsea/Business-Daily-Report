@@ -1,13 +1,12 @@
 <div class="container-fluid px-5">
   <div class="row">
-    <div class="col">
-      <h2 class="mt-3">案件一覧</h2>
-      <h2 class="mt-5">案件一覧</h2>
+    <div class="col m-5 p-5">
+      <h2 class="mt-3 mb-4">案件一覧</h2>
       <div class="mt-4">
         <%= search_form_for @q, url: search_items_path do |f| %>
-          <%= f.label :title_cont, '案件名' %>
-          <%= f.search_field :title_cont %>
-          <%= f.submit '検索' %>
+          <%= f.label :title_cont, '案件名', {class: 'lead m-3'} %>
+          <%= f.search_field :title_cont, {class: 'lead m-3'}%>
+          <%= f.submit '検索', class: "m-3 pr-3 pl-3 btn btn-light btn-sm" %>
         <% end %>
       <label class="font-weight-bold">
         <%= link_to new_item_path do %>
@@ -17,23 +16,23 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-            <th>担当者</th>
-            <th>施設名</th>
-            <th>案件ジャンル</th>
-            <th>案件名</th>
-            <th>ステータス</th>
+            <th scope="col", class="p-4">担当者</th>
+            <th scope="col", class="p-4">施設名</th>
+            <th scope="col", class="p-4">案件ジャンル</th>
+            <th scope="col", class="p-4">案件名</th>
+            <th scope="col", class="p-4">ステータス</th>
           </tr>
         </thead>
         <% @items.each do |item| %>
         <tbody>
           <tr>
-            <td><%= item.employee.name %></td>
-            <td><%= item.facility.name %></td>
-            <td><%= item.genre %></td>
-            <td>
+            <td scope="row", class="p-4"><%= item.employee.name %></td>
+            <td scope="row", class="p-4"><%= item.facility.name %></td>
+            <td scope="row", class="p-4"><%= item.genre %></td>
+            <td scope="row", class="p-4">
               <%= link_to item.title, item_path(item.id), class: 'text-white' %>
             </td>
-            <td><%= item.status %></td>
+            <td scope="row", class="p-4"><%= item.status %></td>
           </tr>
         </tbody>
         <% end %>
