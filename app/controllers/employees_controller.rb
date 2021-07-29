@@ -15,10 +15,10 @@ class EmployeesController < ApplicationController
     @event = Event.new
     if current_employee.admin == true
       # 会社名と会社コードが一緒のデータのみを抽出するためにjoins及びwhereを使用
-      @items = Item.joins(:employee).where(employees: { company_name: @employee.company_name, company_code: @employee.company_code })
-      @daily_reports = DailyReport.joins(:employee).where(employees: { company_name: @employee.company_name, company_code: @employee.company_code }).order(created_at: :desc)
+      @items = Item.joins(:employee).where(employees: { company_name: @employee.company_name, company_code: @employee.company_code }).limit(4).order(created_at: :desc)
+      @daily_reports = DailyReport.joins(:employee).where(employees: { company_name: @employee.company_name, company_code: @employee.company_code }).order(created_at: :desc).limit(4)
     else
-      @items = @employee.items
+      @items = @employee.items.limit(4).order(created_at: :desc)
       @daily_reports = @employee.daily_reports.order(created_at: :desc)
     end
   end

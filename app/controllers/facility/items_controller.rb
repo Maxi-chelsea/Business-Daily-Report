@@ -1,6 +1,6 @@
 class Facility::ItemsController < ApplicationController
   def index
-    @items = Item.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code })
+    @items = Item.joins(:employee).where(employees: { company_name: current_employee.company_name, company_code: current_employee.company_code }).order(created_at: :desc)
     @q = Item.ransack(params[:q])
     @item_all = @q.result
   end
