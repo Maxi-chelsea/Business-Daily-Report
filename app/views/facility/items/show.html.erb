@@ -50,6 +50,7 @@
                 <th><%= item_comment.employee.name %></th>
                 <th><%= item_comment.created_at.to_s(:datetime_jp) %></th>
                 <th><%= item_comment.comment %></th>
+                <!--作成者だけに編集ボタンと削除ボタンを表示-->
                 <% if item_comment.employee == current_employee %>
                   <th>
                     <%= link_to item_item_comment_path(@item, item_comment), method: :delete do %>
