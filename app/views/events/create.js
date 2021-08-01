@@ -1,4 +1,3 @@
-//フォームを空にする
 $('input[type="text"]').val('');
 //モーダルを消す
 $('#inputScheduleForm').modal('hide');
