@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
   resources :events
 
-
   scope module: :facility do
     resources :items do
       collection do
@@ -48,6 +47,5 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: :index
-
 
 end
