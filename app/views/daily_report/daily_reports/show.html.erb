@@ -35,9 +35,7 @@
       </table>
       <!--作成者だけに編集ボタンと削除ボタンを表示-->
       <% if @daily_report.employee_id == current_employee.id %>
-        <%= link_to edit_daily_report_path(@daily_report) do %>
-          <button class="m-2 btn btn-primary">編集する</button>
-        <% end %>
+        <%= link_to '編集する', edit_daily_report_path(@daily_report), class: "m-2 btn btn-primary" %>
         <%= link_to daily_report_path(@daily_report), method: :delete do %>
           <button type="m-2 button" class="btn btn-danger">削除する</button>
         <% end %>
